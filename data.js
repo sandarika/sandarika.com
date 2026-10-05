@@ -8,8 +8,7 @@ window.SITE = {
   name: "Sandi Warjri",
   initials: "SW",                       // shown in the logo + browser tab icon
   tagline:
-    "Computer Science student at the University of Nebraska–Lincoln and the Raikes School, minoring in Business and Math.",
-  status: "CS @ UNL · Raikes School",   // little pill above your name ("" to hide)
+    "Computer Science student at the University of Nebraska–Lincoln and the Raikes School, minoring in Business and Math. Mentoring young coders and helping people use AI responsibly.",
 
   email: "sandarikaw@gmail.com",
   socials: [

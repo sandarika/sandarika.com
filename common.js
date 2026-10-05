@@ -13,7 +13,7 @@ window.Site = (() => {
     String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
 
   /* ---------- Name, initials, tab icon, footer ---------- */
-  const name = SITE.name || "Your Name";
+  const name = SITE.name || "Sandi Warjri";
   const initials = SITE.initials || name.split(/\s+/).map((w) => w[0]).join("").slice(0, 2).toUpperCase();
   $$("[data-initials]").forEach((el) => (el.textContent = initials));
   $$("[data-name-plain]").forEach((el) => (el.textContent = name));

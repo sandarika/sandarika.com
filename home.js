@@ -13,10 +13,6 @@
   $('meta[name="description"]').content = SITE.tagline || `${name}'s portfolio.`;
   $("[data-tagline]").textContent = SITE.tagline || "";
 
-  // Status pill
-  if (SITE.status) $("[data-status-text]").textContent = SITE.status;
-  else $("[data-status]").remove();
-
   Site.splitLetters($("[data-name]"), name);
 
   // Tech ticker (content repeated so the loop never shows a gap)
