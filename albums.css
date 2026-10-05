@@ -97,6 +97,13 @@
 
 .album-card { position: relative; }
 .album-card:hover { z-index: 2; }
+.album-link { display: block; color: inherit; border-radius: 12px; }
+.listen {
+  display: inline-block; margin-top: 12px; color: var(--accent-2); font-size: 0.75rem;
+  opacity: 0; translate: 0 4px; transition: opacity 0.3s, translate 0.4s var(--ease-out);
+}
+.album-card:hover .listen, .album-link:focus-visible .listen { opacity: 1; translate: 0 0; }
+@media (hover: none) { .listen { opacity: 1; translate: 0 0; } }
 .album-art { position: relative; aspect-ratio: 1; margin-bottom: 18px; }
 
 /* ambient glow made from the cover itself */

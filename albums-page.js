@@ -49,8 +49,13 @@
                <div><span class="fav-label mono">fav song</span><span class="fav-song">${esc(a.favSong)}</span></div>
              </div>`
           : "";
+        const byline = [a.artist, a.year].filter(Boolean).map(esc).join(" · ");
+        // cards open the album (e.g. on YouTube Music) when a link is set
+        const open = a.link ? `<a class="album-link" href="${esc(a.link)}" target="_blank" rel="noopener">` : "<div>";
+        const close = a.link ? "</a>" : "</div>";
         return `
         <li class="album-card reveal" style="--h:${hueAt(i)}; --d:${(i % 4) * 80}ms">
+          ${open}
           <div class="album-art">
             <div class="glow"${bg}></div>
             <div class="vinyl" aria-hidden="true"><div class="disc"><div class="disc-label"${bg}></div></div></div>
@@ -59,9 +64,11 @@
           </div>
           <div class="album-info">
             <h3>${esc(title)}</h3>
-            ${a.artist ? `<p class="artist">${esc(a.artist)}</p>` : ""}
+            ${byline ? `<p class="artist">${byline}</p>` : ""}
             ${fav}
+            ${a.link ? '<span class="listen mono">listen <span aria-hidden="true">↗</span></span>' : ""}
           </div>
+          ${close}
         </li>`;
       })
       .join("");

@@ -1,7 +1,7 @@
 /* =============================================================
    ✏️  EDIT THIS FILE TO UPDATE THE SITE
-   Everything on both pages (home + albums) is generated from
-   what's below. You never need to touch the HTML.
+   Everything on the home page is generated from what's below
+   (album rankings are in albums.js). You never need to touch the HTML.
    ============================================================= */
 
 window.SITE = {
@@ -59,14 +59,4 @@ window.SITE = {
    ------------------------------------------------------------- */
 window.PROJECTS = [];
 
-/* -------------------------------------------------------------
-   ALBUMS  (shown on albums.html, sorted by rank: 1 = best)
-   1. Put the cover image in the  images/albums/  folder
-   2. Copy the line below into the list and fill it in
-
-   { rank: 1, title: "Album Title", artist: "Artist", favSong: "Favorite Song", image: "images/albums/cover.jpg" },
-
-   - image can also be a full https:// link, or "" for a generated cover
-   - artist is optional
-   ------------------------------------------------------------- */
-window.ALBUMS = [];
+// Album rankings live in albums.js (updated by the /albums Claude Code skill).
