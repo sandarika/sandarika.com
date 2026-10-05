@@ -1,0 +1,206 @@
+/* ============ Albums page (loads after styles.css) ============ */
+
+/* ---------- Hero ---------- */
+.ah { position: relative; isolation: isolate; overflow: hidden; padding: 140px 0 70px; }
+.ah .aurora { opacity: 0.4; }
+.ah::after {
+  content: ""; position: absolute; inset: auto 0 0 0; height: 45%; z-index: -1; pointer-events: none;
+  background: linear-gradient(transparent, var(--bg));
+}
+.ah-inner { display: grid; grid-template-columns: 1.15fr 1fr; gap: 48px; align-items: center; }
+.page-title { font-size: clamp(3rem, 8.5vw, 6.8rem); margin: 24px 0 18px; }
+.lede { max-width: 44ch; color: var(--muted); font-size: clamp(1rem, 1.6vw, 1.15rem); margin: 0 0 20px; }
+.ah-meta { color: var(--dim); margin: 0; }
+.ah-meta strong { color: var(--accent-2); font-weight: 500; }
+.ah-meta .dot { margin: 0 6px; }
+
+/* ---------- Turntable ---------- */
+.turntable {
+  position: relative; display: block; justify-self: end;
+  width: min(100%, 420px); aspect-ratio: 1.12;
+  border-radius: 28px; border: 1px solid var(--border);
+  background: linear-gradient(145deg, #1b1b28, #0c0c13);
+  box-shadow: 0 40px 80px -30px rgba(0, 0, 0, 0.85), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  cursor: pointer;
+}
+.turntable > span { position: absolute; display: block; }
+.platter {
+  left: 7%; top: 50%; width: 76%; aspect-ratio: 1; translate: 0 -50%;
+  border-radius: 50%; background: #050507;
+  box-shadow: 0 0 0 6px #23232f, 0 12px 30px rgba(0, 0, 0, 0.6);
+}
+/* static light reflection on top of the spinning record */
+.platter::after {
+  content: ""; position: absolute; inset: 3%; border-radius: 50%; pointer-events: none;
+  background: conic-gradient(from 20deg, transparent 0 8%, rgba(255, 255, 255, 0.11) 13%, transparent 20% 52%, rgba(255, 255, 255, 0.08) 60%, transparent 68%);
+}
+.record, .disc {
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, transparent 30%, rgba(255, 255, 255, 0.025) 31%, transparent 32%),
+    repeating-radial-gradient(circle, #0b0b10 0 1.4px, #191920 1.4px 2.8px);
+}
+.record {
+  position: absolute; inset: 3%; display: block;
+  animation: spin 1.8s linear infinite;          /* 33⅓ rpm */
+}
+.record-label, .disc-label {
+  position: absolute; display: block; inset: 33%; border-radius: 50%;
+  background: conic-gradient(from 0deg, var(--accent), var(--accent-2), var(--accent-3), var(--accent));
+  background-size: cover; background-position: center;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.45);
+}
+.record-label::after, .disc-label::after {
+  /* spindle hole */
+  content: ""; position: absolute; left: 50%; top: 50%; width: 10%; height: 10%;
+  translate: -50% -50%; border-radius: 50%; background: #07070c;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.25);
+}
+.tonearm {
+  top: 9%; right: 9%; width: 5px; height: 64%; border-radius: 3px;
+  background: linear-gradient(90deg, #7d7d8e, #e2e2ec, #7d7d8e);
+  transform-origin: 50% 8px;
+  rotate: 24deg;
+  transition: rotate 0.9s var(--ease-out);
+  animation: needle-drop 1.4s var(--ease-out) 0.9s backwards;
+}
+.tonearm::before {
+  /* pivot */
+  content: ""; position: absolute; left: 50%; top: -10px; width: 36px; height: 36px; margin-left: -18px;
+  border-radius: 50%; background: radial-gradient(circle at 35% 35%, #4d4d60, #191922);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+}
+.tonearm::after {
+  /* head */
+  content: ""; position: absolute; left: 50%; bottom: -8px; width: 16px; height: 28px; margin-left: -8px;
+  border-radius: 4px; background: linear-gradient(#e2e2ec, #6d6d7d); rotate: 18deg;
+}
+.tt-led {
+  right: 7%; bottom: 8%; width: 8px; height: 8px; border-radius: 50%;
+  background: var(--accent-2); box-shadow: 0 0 12px var(--accent-2);
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+.turntable.paused .record { animation-play-state: paused; }
+.turntable.paused .tonearm { rotate: 0deg; }
+.turntable.paused .tt-led { background: var(--dim); box-shadow: none; }
+
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes needle-drop { from { rotate: 0deg; } }
+
+/* ---------- Album grid ---------- */
+.albums-section { padding: 30px 0 clamp(90px, 12vw, 140px); }
+.album-grid {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; gap: 56px 36px;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr));
+}
+
+.album-card { position: relative; }
+.album-card:hover { z-index: 2; }
+.album-art { position: relative; aspect-ratio: 1; margin-bottom: 18px; }
+
+/* ambient glow made from the cover itself */
+.glow {
+  position: absolute; inset: 12%; border-radius: 50%;
+  background: hsl(var(--h) 90% 60%) center / cover;
+  filter: blur(36px) saturate(1.6);
+  opacity: 0; transition: opacity 0.6s;
+}
+.album-card:hover .glow { opacity: 0.55; }
+
+.vinyl {
+  position: absolute; inset: 4%;
+  transform: translateX(7%);
+  transition: transform 0.8s var(--ease-out);
+}
+.disc {
+  position: relative; width: 100%; height: 100%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), inset 0 0 0 2px rgba(255, 255, 255, 0.03);
+  animation: spin 1.8s linear infinite paused;
+}
+.disc::after {
+  content: ""; position: absolute; inset: 0; border-radius: 50%;
+  background: conic-gradient(from 30deg, transparent 0 10%, rgba(255, 255, 255, 0.1) 15%, transparent 22% 55%, rgba(255, 255, 255, 0.07) 62%, transparent 70%);
+}
+.disc-label { background: radial-gradient(circle, hsl(var(--h) 85% 62%), hsl(calc(var(--h) + 40) 70% 32%)); background-size: cover; background-position: center; }
+
+.cover {
+  position: absolute; inset: 0; z-index: 1; overflow: hidden;
+  border-radius: 10px; background: hsl(var(--h) 50% 10%);
+  box-shadow: 0 18px 40px -12px rgba(0, 0, 0, 0.8), inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+  transition: transform 0.7s var(--ease-out);
+}
+.cover img { width: 100%; height: 100%; object-fit: cover; }
+.cover::after {
+  /* glossy sleeve shine that sweeps on hover */
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(115deg, transparent 35%, rgba(255, 255, 255, 0.18) 50%, transparent 65%);
+  transform: translateX(-120%); transition: transform 0.9s var(--ease-out);
+}
+.cover .art-letter { font-size: clamp(3.5rem, 8vw, 5rem); }
+
+.album-card:hover .cover { transform: translateX(-9%) rotate(-2deg); }
+.album-card:hover .cover::after { transform: translateX(120%); }
+.album-card:hover .vinyl { transform: translateX(30%); }
+.album-card:hover .disc { animation-play-state: running; }
+
+/* rank badge */
+.rank {
+  position: absolute; z-index: 2; left: -10px; top: -12px;
+  padding: 5px 12px; border-radius: 999px;
+  font: 700 1rem / 1.2 var(--font-display); letter-spacing: -0.02em;
+  color: var(--text); background: rgba(13, 13, 22, 0.8); border: 1px solid var(--border-hi);
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+  transition: transform 0.4s var(--ease-out);
+}
+.album-card:hover .rank { transform: translate(-3px, -3px) rotate(-6deg) scale(1.08); }
+.top .rank { color: #17120a; border-color: transparent; font-size: 1.15rem; }
+.top-1 .rank { background: linear-gradient(135deg, #fff1b8, #f2c94c 45%, #c8901c); box-shadow: 0 6px 24px -4px rgba(242, 201, 76, 0.6); }
+.top-2 .rank { background: linear-gradient(135deg, #ffffff, #cfd3dc 45%, #8d94a3); }
+.top-3 .rank { background: linear-gradient(135deg, #ffd9bd, #e09a62 45%, #a2582a); }
+
+/* info */
+.album-info h3 { font: 600 1.15rem / 1.25 var(--font-display); letter-spacing: -0.01em; margin: 0; }
+.artist { color: var(--muted); margin: 2px 0 0; font-size: 0.92rem; }
+.fav { display: flex; align-items: center; gap: 10px; margin-top: 12px; }
+.fav-label { display: block; color: var(--dim); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; }
+.fav-song { display: block; color: var(--text); font-size: 0.92rem; }
+
+/* little equalizer — paused at different heights, dances on hover */
+.eq { display: inline-flex; align-items: flex-end; gap: 2px; height: 16px; flex: none; }
+.eq i {
+  width: 3px; height: 100%; border-radius: 1px; background: var(--accent-2);
+  transform-origin: bottom;
+  animation: eq 0.9s ease-in-out infinite alternate paused;
+}
+.eq i:nth-child(1) { animation-duration: 0.8s; animation-delay: -0.3s; }
+.eq i:nth-child(2) { animation-duration: 1.1s; animation-delay: -0.9s; }
+.eq i:nth-child(3) { animation-duration: 0.7s; animation-delay: -0.5s; }
+.eq i:nth-child(4) { animation-duration: 1s; animation-delay: -0.2s; }
+.album-card:hover .eq i { animation-play-state: running; }
+@keyframes eq { from { transform: scaleY(0.2); } to { transform: scaleY(1); } }
+
+/* empty state record */
+.mini-vinyl {
+  width: 64px; height: 64px; margin-bottom: 10px; border-radius: 50%;
+  background:
+    radial-gradient(circle, var(--accent) 0 18%, #07070c 19% 22%, transparent 23%),
+    repeating-radial-gradient(circle, #0b0b10 0 1.4px, #1d1d26 1.4px 2.8px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  animation: spin 1.8s linear infinite;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 860px) {
+  .ah-inner { grid-template-columns: 1fr; gap: 40px; }
+  .turntable { justify-self: center; width: min(100%, 360px); }
+}
+@media (max-width: 560px) {
+  .ah { padding-top: 116px; }
+  .album-grid { grid-template-columns: repeat(2, 1fr); gap: 40px 18px; }
+  .album-info h3 { font-size: 1rem; }
+  .rank { left: -6px; top: -10px; font-size: 0.85rem; padding: 4px 10px; }
+  .top .rank { font-size: 0.95rem; }
+  .fav { gap: 8px; }
+}

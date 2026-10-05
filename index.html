@@ -3,28 +3,34 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Portfolio</title>
-  <meta name="description" content="Personal portfolio and project archive." />
+  <title>Sandi Warjri</title>
+  <meta name="description" content="Sandi Warjri — Computer Science student at the University of Nebraska–Lincoln and the Raikes School." />
+  <meta property="og:title" content="Sandi Warjri" />
+  <meta property="og:description" content="Computer Science student at the University of Nebraska–Lincoln and the Raikes School." />
+  <meta property="og:url" content="https://sandarika.com/" />
+  <meta property="og:type" content="website" />
   <meta name="theme-color" content="#07070c" />
-  <link rel="icon" href="data:," />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <script src="data.js" defer></script>
-  <script src="script.js" defer></script>
+  <script src="common.js" defer></script>
+  <script src="home.js" defer></script>
 </head>
 <body>
-  <a class="skip" href="#projects">Skip to projects</a>
+  <a class="skip" href="#about">Skip to content</a>
   <div class="progress" aria-hidden="true"></div>
   <div class="cursor-ring" aria-hidden="true"></div>
   <div class="grain" aria-hidden="true"></div>
 
   <header class="nav">
-    <a class="logo magnetic" href="#top" aria-label="Back to top" data-initials>YN</a>
+    <a class="logo magnetic" href="#top" aria-label="Back to top" data-initials>SW</a>
     <nav aria-label="Main">
       <a href="#projects">Work</a>
       <a href="#about">About</a>
+      <a href="albums.html">Albums</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
@@ -37,7 +43,7 @@
 
       <div class="hero-inner container">
         <p class="eyebrow mono intro" style="--d:0ms" data-status><span class="pulse"></span><span data-status-text></span></p>
-        <h1 class="hero-name" data-name>Your Name</h1>
+        <h1 class="hero-name" data-name>Sandi Warjri</h1>
         <p class="hero-role intro" style="--d:500ms">
           <span class="sr-only" data-roles-sr></span>
           <span aria-hidden="true">I build <span class="role" data-role></span><span class="caret"></span></span>
@@ -75,7 +81,10 @@
         <h2>A bit about me</h2>
       </header>
       <div class="about-grid">
-        <div class="about-text reveal" data-about></div>
+        <div>
+          <div class="about-text reveal" data-about></div>
+          <a class="text-link reveal" href="albums.html">When I'm not coding, I'm ranking albums <span class="arrow" aria-hidden="true">→</span></a>
+        </div>
         <aside class="about-side">
           <div class="stats" data-stats></div>
           <div class="now reveal" style="--d:200ms">
@@ -100,7 +109,7 @@
 
   <footer class="footer container">
     <span>© <span data-year></span> <span data-name-plain></span></span>
-    <span class="mono">hand-built · hosted free on GitHub Pages</span>
+    <span class="mono">hand-prompted · hosted free on GitHub Pages</span>
     <a href="#top" class="mono">back to top ↑</a>
   </footer>
 

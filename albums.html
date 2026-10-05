@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Album Rankings — Sandi Warjri</title>
+  <meta name="description" content="Every album Sandi Warjri has had on repeat, ranked." />
+  <meta property="og:title" content="Album Rankings — Sandi Warjri" />
+  <meta property="og:description" content="Every album I've had on repeat, ranked." />
+  <meta property="og:url" content="https://sandarika.com/albums" />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#07070c" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="albums.css" />
+  <script src="data.js" defer></script>
+  <script src="common.js" defer></script>
+  <script src="albums-page.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#albums">Skip to albums</a>
+  <div class="progress" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="nav">
+    <a class="logo magnetic" href="index.html" aria-label="Home" data-initials>SW</a>
+    <nav aria-label="Main">
+      <a href="index.html#projects">Work</a>
+      <a href="index.html#about">About</a>
+      <a href="albums.html" aria-current="page">Albums</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="ah">
+      <div class="aurora" aria-hidden="true"><span></span><span></span><span></span></div>
+      <div class="container ah-inner">
+        <div class="ah-text">
+          <p class="eyebrow mono intro" style="--d:0ms"><span class="pulse"></span>on repeat</p>
+          <h1 class="hero-name page-title" data-title>Album Rankings</h1>
+          <p class="lede intro" style="--d:600ms">Every album I've had on repeat, ranked from best to… still pretty great.</p>
+          <p class="ah-meta mono intro" style="--d:750ms" data-albums-meta></p>
+        </div>
+
+        <button class="turntable intro" style="--d:250ms" type="button" aria-label="Pause the record" aria-pressed="false">
+          <span class="platter">
+            <span class="record"><span class="record-label" data-hero-label></span></span>
+          </span>
+          <span class="tonearm"></span>
+          <span class="tt-led"></span>
+        </button>
+      </div>
+    </section>
+
+    <section id="albums" class="container albums-section">
+      <ol class="album-grid" data-albums></ol>
+    </section>
+  </main>
+
+  <footer class="footer container">
+    <span>© <span data-year></span> <span data-name-plain></span></span>
+    <span class="mono">hand-prompted · hosted free on GitHub Pages</span>
+    <a href="#top" class="mono">back to top ↑</a>
+  </footer>
+
+  <div class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

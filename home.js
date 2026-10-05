@@ -1,52 +1,23 @@
-/* Builds the page from data.js and runs all the animations.
-   You shouldn't need to edit this file — change data.js instead. */
+/* Home page: builds the hero, projects, about and contact sections from
+   data.js and runs the hero animations. Shared helpers live in common.js. */
 (() => {
   "use strict";
 
-  const SITE = window.SITE || {};
+  const { SITE, $, $$, esc, reduceMotion, finePointer, name, toast } = window.Site;
   const PROJECTS = window.PROJECTS || [];
-  const $ = (sel, root = document) => root.querySelector(sel);
-  const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
-  const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const finePointer = matchMedia("(hover: hover) and (pointer: fine)").matches;
-  const esc = (s = "") =>
-    String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
 
   /* =========================================================
      1. Render content from data.js
      ========================================================= */
-  const name = SITE.name || "Your Name";
-  const initials = SITE.initials || name.split(/\s+/).map((w) => w[0]).join("").slice(0, 2).toUpperCase();
-
-  document.title = `${name} — Projects`;
-  $('meta[name="description"]').content = SITE.tagline || `${name}'s portfolio and projects.`;
-  $$("[data-initials]").forEach((el) => (el.textContent = initials));
-  $$("[data-name-plain]").forEach((el) => (el.textContent = name));
-  $("[data-year]").textContent = new Date().getFullYear();
+  document.title = name;
+  $('meta[name="description"]').content = SITE.tagline || `${name}'s portfolio.`;
   $("[data-tagline]").textContent = SITE.tagline || "";
-
-  // Tab icon generated from your initials
-  const favicon = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='#8b6cff'/><stop offset='1' stop-color='#2ee6c9'/></linearGradient></defs><rect width='64' height='64' rx='16' fill='url(#g)'/><text x='50%' y='54%' dominant-baseline='middle' text-anchor='middle' font-family='Arial,sans-serif' font-weight='700' font-size='26' fill='#fff'>${esc(initials)}</text></svg>`;
-  $('link[rel="icon"]').href = "data:image/svg+xml," + encodeURIComponent(favicon);
 
   // Status pill
   if (SITE.status) $("[data-status-text]").textContent = SITE.status;
   else $("[data-status]").remove();
 
-  // Hero name, split into letters that rise in one by one
-  const nameEl = $("[data-name]");
-  let letterCount = 0;
-  nameEl.setAttribute("aria-label", name);
-  nameEl.innerHTML = name
-    .split(/\s+/)
-    .map(
-      (word) =>
-        `<span class="word" aria-hidden="true">${[...word]
-          .map((ch) => `<span class="char"><span style="--i:${letterCount++}">${esc(ch)}</span></span>`)
-          .join("")}</span>`
-    )
-    .join(" ");
-  setTimeout(() => nameEl.classList.add("ready"), reduceMotion ? 0 : 1200 + letterCount * 45);
+  Site.splitLetters($("[data-name]"), name);
 
   // Roles
   const roles = SITE.roles && SITE.roles.length ? SITE.roles : ["cool things"];
@@ -77,31 +48,43 @@
       : "";
 
   const grid = $("[data-projects]");
-  grid.innerHTML = sorted
-    .map((p, i) => {
-      const title = p.title || "Untitled";
-      const h = p.hue ?? hueAt(i);
-      const media = p.image
-        ? `<img src="${esc(p.image)}" alt="" loading="lazy" />`
-        : `<div class="art"></div><span class="art-letter" aria-hidden="true">${esc([...title][0])}</span>`;
-      const tags = (p.tags || []).map((t) => `<li>${esc(t)}</li>`).join("");
-      return `
-      <article class="card reveal" data-category="${esc(p.category || "")}"
-        style="--h:${h}; --d:${(i % 3) * 90}ms; view-transition-name: card-${i}">
-        <div class="card-media">${media}</div>
-        <div class="card-body">
-          <div class="card-meta mono">
-            <span>${esc(p.year || "")}${p.category ? " · " + esc(p.category) : ""}</span>
-            ${p.featured ? '<span class="badge">★ featured</span>' : ""}
+  if (!sorted.length) {
+    grid.outerHTML = `
+      <div class="empty reveal">
+        <p class="mono empty-line"><span class="prompt">$</span> git push projects<span class="caret"></span></p>
+        <p class="empty-note">New projects are on the way.</p>
+      </div>`;
+    // nothing to see yet, so the hero button points at About instead
+    const cta = $(".hero-cta .btn-primary");
+    cta.href = "#about";
+    cta.firstChild.textContent = "About me ";
+  } else {
+    grid.innerHTML = sorted
+      .map((p, i) => {
+        const title = p.title || "Untitled";
+        const h = p.hue ?? hueAt(i);
+        const media = p.image
+          ? `<img src="${esc(p.image)}" alt="" loading="lazy" />`
+          : `<div class="art"></div><span class="art-letter" aria-hidden="true">${esc([...title][0])}</span>`;
+        const tags = (p.tags || []).map((t) => `<li>${esc(t)}</li>`).join("");
+        return `
+        <article class="card reveal" data-category="${esc(p.category || "")}"
+          style="--h:${h}; --d:${(i % 3) * 90}ms; view-transition-name: card-${i}">
+          <div class="card-media">${media}</div>
+          <div class="card-body">
+            <div class="card-meta mono">
+              <span>${esc(p.year || "")}${p.category ? " · " + esc(p.category) : ""}</span>
+              ${p.featured ? '<span class="badge">★ featured</span>' : ""}
+            </div>
+            <h3>${esc(title)}</h3>
+            <p>${esc(p.description || "")}</p>
+            ${tags ? `<ul class="tags">${tags}</ul>` : ""}
+            <div class="card-links">${linkTag(p.demo, "Live")}${linkTag(p.code, "Code")}</div>
           </div>
-          <h3>${esc(title)}</h3>
-          <p>${esc(p.description || "")}</p>
-          ${tags ? `<ul class="tags">${tags}</ul>` : ""}
-          <div class="card-links">${linkTag(p.demo, "Live")}${linkTag(p.code, "Code")}</div>
-        </div>
-      </article>`;
-    })
-    .join("");
+        </article>`;
+      })
+      .join("");
+  }
 
   // Filter buttons
   const filtersEl = $("[data-filters]");
@@ -121,8 +104,7 @@
       const apply = () => {
         $$(".chip", filtersEl).forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
         $$(".card", grid).forEach((card) => {
-          const show = filter === "All" || card.dataset.category === filter;
-          card.hidden = !show;
+          card.hidden = !(filter === "All" || card.dataset.category === filter);
           card.classList.add("in"); // make sure revealed
         });
       };
@@ -148,8 +130,9 @@
   $("[data-stats]").innerHTML = (SITE.stats || [])
     .map((s, i) => {
       const value = s.value === "auto" ? PROJECTS.length : Number(s.value) || 0;
+      const decimals = s.decimals || 0;
       return `<div class="stat reveal" style="--d:${i * 90}ms">
-        <div class="stat-value" data-count="${value}" data-suffix="${esc(s.suffix || "")}">0${esc(s.suffix || "")}</div>
+        <div class="stat-value" data-count="${value}" data-decimals="${decimals}" data-suffix="${esc(s.suffix || "")}">${(0).toFixed(decimals)}${esc(s.suffix || "")}</div>
         <div class="stat-label">${esc(s.label || "")}</div>
       </div>`;
     })
@@ -160,28 +143,7 @@
     const emailEl = $("[data-email]");
     emailEl.textContent = SITE.email;
     emailEl.href = `mailto:${SITE.email}`;
-  } else {
-    $("[data-email-block]").remove();
-  }
-  $("[data-socials]").innerHTML = (SITE.socials || [])
-    .map((s) => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.label)} <span aria-hidden="true">↗</span></a>`)
-    .join("");
-
-  /* =========================================================
-     2. Small helpers
-     ========================================================= */
-  const toastEl = $(".toast");
-  let toastTimer;
-  function toast(msg) {
-    toastEl.textContent = msg;
-    toastEl.classList.add("show");
-    clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => toastEl.classList.remove("show"), 2200);
-  }
-
-  const copyBtn = $("[data-copy]");
-  if (copyBtn) {
-    copyBtn.addEventListener("click", async () => {
+    $("[data-copy]").addEventListener("click", async () => {
       try {
         await navigator.clipboard.writeText(SITE.email);
         toast("Email copied ✓");
@@ -189,26 +151,24 @@
         location.href = `mailto:${SITE.email}`;
       }
     });
+  } else {
+    $("[data-email-block]").remove();
   }
+  $("[data-socials]").innerHTML = (SITE.socials || [])
+    .map((s) => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.label)} <span aria-hidden="true">↗</span></a>`)
+    .join("");
+
+  Site.reveal();
 
   /* =========================================================
-     3. Scroll: progress bar, nav, parallax, active link
+     2. Hero parallax + active nav link
      ========================================================= */
-  const progress = $(".progress");
-  const nav = $(".nav");
   const heroInner = $(".hero-inner");
-  function onScroll() {
-    const y = scrollY;
-    const max = document.documentElement.scrollHeight - innerHeight;
-    progress.style.setProperty("--p", max > 0 ? y / max : 0);
-    nav.classList.toggle("scrolled", y > 20);
-    if (!reduceMotion && y < innerHeight * 1.2) {
-      heroInner.style.transform = `translate3d(0, ${y * 0.3}px, 0)`;
-      heroInner.style.opacity = Math.max(0, 1 - y / (innerHeight * 0.85));
-    }
-  }
-  addEventListener("scroll", onScroll, { passive: true });
-  onScroll();
+  Site.onScroll((y) => {
+    if (reduceMotion || y > innerHeight * 1.2) return;
+    heroInner.style.transform = `translate3d(0, ${y * 0.3}px, 0)`;
+    heroInner.style.opacity = Math.max(0, 1 - y / (innerHeight * 0.85));
+  });
 
   const navLinks = $$(".nav nav a");
   const sectionSpy = new IntersectionObserver(
@@ -224,37 +184,7 @@
   $$("section[id]").forEach((s) => sectionSpy.observe(s));
 
   /* =========================================================
-     4. Reveal on scroll + number counters
-     ========================================================= */
-  function countUp(el) {
-    const target = Number(el.dataset.count);
-    const suffix = el.dataset.suffix || "";
-    if (reduceMotion) return (el.textContent = target.toLocaleString() + suffix);
-    const t0 = performance.now();
-    const dur = 1600;
-    const step = (now) => {
-      const t = Math.min(1, (now - t0) / dur);
-      el.textContent = Math.round(target * (1 - Math.pow(1 - t, 4))).toLocaleString() + suffix;
-      if (t < 1) requestAnimationFrame(step);
-    };
-    requestAnimationFrame(step);
-  }
-
-  const revealer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((en) => {
-        if (!en.isIntersecting) return;
-        en.target.classList.add("in");
-        $$("[data-count]", en.target).forEach(countUp);
-        revealer.unobserve(en.target);
-      });
-    },
-    { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
-  );
-  $$(".reveal").forEach((el) => revealer.observe(el));
-
-  /* =========================================================
-     5. Text scramble for the rotating role
+     3. Text scramble for the rotating role
      ========================================================= */
   class Scramble {
     constructor(el) {
@@ -306,7 +236,7 @@
   }
 
   /* =========================================================
-     6. Pointer effects: card tilt + spotlight, magnetic buttons, cursor ring
+     4. Project card tilt + spotlight
      ========================================================= */
   if (finePointer) {
     $$(".card").forEach((card) => {
@@ -329,56 +259,10 @@
         rect = null;
       });
     });
-
-    if (!reduceMotion) {
-      $$(".magnetic").forEach((el) => {
-        let rect;
-        el.addEventListener("pointerenter", () => (rect = el.getBoundingClientRect()));
-        el.addEventListener("pointermove", (e) => {
-          if (!rect) rect = el.getBoundingClientRect();
-          const dx = e.clientX - (rect.left + rect.width / 2);
-          const dy = e.clientY - (rect.top + rect.height / 2);
-          el.style.transform = `translate(${dx * 0.25}px, ${dy * 0.35}px)`;
-        });
-        el.addEventListener("pointerleave", () => {
-          el.style.transform = "";
-          rect = null;
-        });
-      });
-
-      const ring = $(".cursor-ring");
-      let x = innerWidth / 2, y = innerHeight / 2, rx = x, ry = y, scale = 1, targetScale = 1;
-      addEventListener(
-        "pointermove",
-        (e) => {
-          x = e.clientX;
-          y = e.clientY;
-          if (!ring.classList.contains("on")) {
-            rx = x;
-            ry = y;
-            ring.classList.add("on");
-          }
-        },
-        { passive: true }
-      );
-      document.addEventListener("pointerover", (e) => {
-        const link = e.target.closest("a, button");
-        ring.classList.toggle("link", !!link);
-        targetScale = link ? 0.45 : e.target.closest(".card") ? 1.6 : 1;
-      });
-      document.documentElement.addEventListener("pointerleave", () => ring.classList.remove("on"));
-      (function follow() {
-        rx += (x - rx) * 0.2;
-        ry += (y - ry) * 0.2;
-        scale += (targetScale - scale) * 0.2;
-        ring.style.transform = `translate3d(${rx}px, ${ry}px, 0) scale(${scale})`;
-        requestAnimationFrame(follow);
-      })();
-    }
   }
 
   /* =========================================================
-     7. Hero background: interactive particle constellation
+     5. Hero background: interactive particle constellation
      ========================================================= */
   const hero = $(".hero");
   const canvas = $(".hero-canvas");
@@ -544,7 +428,7 @@
   });
 
   /* =========================================================
-     8. Easter egg: type "party" anywhere 🎉
+     6. Easter egg: type "party" anywhere 🎉
      ========================================================= */
   let typed = "";
   addEventListener("keydown", (e) => {
