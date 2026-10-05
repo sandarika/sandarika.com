@@ -9,7 +9,6 @@
   /* =========================================================
      1. Render content from data.js
      ========================================================= */
-  document.title = name;
   $('meta[name="description"]').content = SITE.tagline || `${name}'s portfolio.`;
   $("[data-tagline]").textContent = SITE.tagline || "";
 

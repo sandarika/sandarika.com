@@ -8,7 +8,7 @@ window.SITE = {
   name: "Sandi Warjri",
   initials: "SW",                       // shown in the logo + browser tab icon
   tagline:
-    "Computer Science student at the University of Nebraska–Lincoln and the Raikes School, minoring in Business and Math. Mentoring young coders and helping people use AI responsibly.",
+    "Learner.",
 
   email: "sandarikaw@gmail.com",
   socials: [
@@ -19,9 +19,9 @@ window.SITE = {
   // Scrolling ticker of languages, tools and skills
   stack: [
     "Python", "Java", "C", "C#", "SQL", "JavaScript", "HTML & CSS",
-    "React", "Next.js", "FastAPI", "ASP.NET", "SQLAlchemy", "Bootstrap", "REST APIs",
+    "React", "Next.js", "FastAPI", "ASP.NET", "SQLAlchemy", "Bootstrap",
     "Git", "GitHub", "Docker", "Linux", "Bash", "MongoDB", "Postman", "VS Code", "Eclipse",
-    "Copilot", "Gemini", "ChatGPT", "Agile", "Spanish",
+    "Copilot", "Gemini", "ChatGPT", "Agile",
   ],
 
   // Paragraphs for the About section (leave empty to show just the stats + list)
@@ -33,11 +33,10 @@ window.SITE = {
     "Advising: responsible AI with The Prairie Initiative",
   ],
 
-  // decimals: how many digits after the point (e.g. 2 for a GPA)
   stats: [
-    { value: 4.0, decimals: 2, label: "GPA" },
-    { value: 7, label: "languages I code in" },
-    { value: 2, suffix: "+", label: "years mentoring young coders" },
+    { value: 4.0, decimals: 1, label: "GPA" },
+    { value: 2, label: "hackathon wins" },
+    { value: 100, suffix: "%", label: "chance I'm procrastinating rn" },
   ],
 };
 
