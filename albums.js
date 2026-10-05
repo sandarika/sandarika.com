@@ -13,5 +13,16 @@ window.ALBUMS = [
     "link": "https://music.youtube.com/browse/MPREb_UkJNOQbd1RK",
     "id": "MPREb_UkJNOQbd1RK",
     "artistId": "UChGCIQRJZHn9iYErPx3vWSQ"
+  },
+  {
+    "rank": 2,
+    "title": "HABIBTI (FOMO)",
+    "artist": "Drake",
+    "year": 2026,
+    "favSong": "Cold Shoulder",
+    "image": "images/albums/drake-habibti-fomo.jpg",
+    "link": "https://music.youtube.com/browse/MPREb_L2anhKI1Knd",
+    "id": "MPREb_L2anhKI1Knd",
+    "artistId": "UCU6cE7pdJPc6DU2jSrKEsdQ"
   }
 ];
