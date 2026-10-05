@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>404 — Lost in space</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&family=JetBrains+Mono&display=swap" rel="stylesheet" />
+  <style>
+    html, body { margin: 0; height: 100%; }
+    body {
+      display: grid; place-items: center; text-align: center; padding: 16px;
+      background: radial-gradient(circle at 50% 40%, #1a1438, #07070c 60%); color: #eeedf7;
+      font: 15px/1.6 "JetBrains Mono", monospace; overflow: hidden;
+    }
+    h1 {
+      font: 700 clamp(6rem, 28vw, 14rem)/1 "Space Grotesk", sans-serif; margin: 0; letter-spacing: -.06em;
+      background: linear-gradient(90deg, #8b6cff, #2ee6c9, #ff5d8f, #8b6cff) 0 0 / 200% 100%;
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+      animation: sheen 5s linear infinite, float 6s ease-in-out infinite;
+    }
+    p { color: #9b9ab4; margin: 8px 0 28px; }
+    a { color: #07070c; background: #eeedf7; padding: 12px 22px; border-radius: 999px; text-decoration: none; font-weight: 600; }
+    @keyframes sheen { to { background-position: -200% 0; } }
+    @keyframes float { 50% { transform: translateY(-14px) rotate(-2deg); } }
+    @media (prefers-reduced-motion: reduce) { h1 { animation: none; } }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>404</h1>
+    <p>This page drifted off into space.</p>
+    <a href="/">Take me home</a>
+  </main>
+</body>
+</html>

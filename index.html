@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfolio</title>
+  <meta name="description" content="Personal portfolio and project archive." />
+  <meta name="theme-color" content="#07070c" />
+  <link rel="icon" href="data:," />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="data.js" defer></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#projects">Skip to projects</a>
+  <div class="progress" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="nav">
+    <a class="logo magnetic" href="#top" aria-label="Back to top" data-initials>YN</a>
+    <nav aria-label="Main">
+      <a href="#projects">Work</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <canvas class="hero-canvas" aria-hidden="true"></canvas>
+      <div class="aurora" aria-hidden="true"><span></span><span></span><span></span></div>
+
+      <div class="hero-inner container">
+        <p class="eyebrow mono intro" style="--d:0ms" data-status><span class="pulse"></span><span data-status-text></span></p>
+        <h1 class="hero-name" data-name>Your Name</h1>
+        <p class="hero-role intro" style="--d:500ms">
+          <span class="sr-only" data-roles-sr></span>
+          <span aria-hidden="true">I build <span class="role" data-role></span><span class="caret"></span></span>
+        </p>
+        <p class="hero-tagline intro" style="--d:650ms" data-tagline></p>
+        <div class="hero-cta intro" style="--d:800ms">
+          <a class="btn btn-primary magnetic" href="#projects">See my work <span class="arrow" aria-hidden="true">→</span></a>
+          <a class="btn btn-ghost magnetic" href="#contact">Say hi</a>
+        </div>
+        <p class="hint mono intro" style="--d:1100ms">psst — click the background</p>
+      </div>
+
+      <a class="scroll-cue" href="#projects" aria-label="Scroll to projects"><span></span></a>
+    </section>
+
+    <!-- TECH TICKER -->
+    <div class="marquee" data-marquee>
+      <div class="marquee-track" aria-hidden="true" data-stack></div>
+    </div>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section container">
+      <header class="section-head reveal">
+        <p class="kicker mono">01 — Work</p>
+        <h2>Things I've built</h2>
+      </header>
+      <div class="filters reveal" role="group" aria-label="Filter projects" data-filters></div>
+      <div class="grid" data-projects></div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section container">
+      <header class="section-head reveal">
+        <p class="kicker mono">02 — About</p>
+        <h2>A bit about me</h2>
+      </header>
+      <div class="about-grid">
+        <div class="about-text reveal" data-about></div>
+        <aside class="about-side">
+          <div class="stats" data-stats></div>
+          <div class="now reveal" style="--d:200ms">
+            <p class="mono now-title">// right now</p>
+            <ul data-now></ul>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section container contact">
+      <p class="kicker mono reveal">03 — Contact</p>
+      <h2 class="contact-title reveal">Let's build<br /><span class="gradient-text">something cool.</span></h2>
+      <div class="contact-card reveal" data-email-block>
+        <a class="email-link" data-email href="#"></a>
+        <button class="btn btn-ghost btn-sm magnetic" type="button" data-copy>Copy</button>
+      </div>
+      <div class="socials reveal" data-socials></div>
+    </section>
+  </main>
+
+  <footer class="footer container">
+    <span>© <span data-year></span> <span data-name-plain></span></span>
+    <span class="mono">hand-built · hosted free on GitHub Pages</span>
+    <a href="#top" class="mono">back to top ↑</a>
+  </footer>
+
+  <div class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

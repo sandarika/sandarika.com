@@ -1,0 +1,51 @@
+<!doctype html>
+<!-- Example of a project hosted inside your site.
+     Anything in /projects/<name>/ is live at yourdomain/projects/<name>/ -->
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bouncing Orbs</title>
+  <style>
+    html, body { margin: 0; height: 100%; background: #07070c; color: #eeedf7; font: 14px/1.5 ui-monospace, monospace; overflow: hidden; }
+    canvas { display: block; width: 100%; height: 100%; cursor: crosshair; touch-action: none; }
+    .ui { position: fixed; top: 16px; left: 16px; right: 16px; display: flex; justify-content: space-between; pointer-events: none; }
+    .ui a, .ui span { pointer-events: auto; padding: 8px 14px; border: 1px solid rgba(255,255,255,.12); border-radius: 999px; background: rgba(255,255,255,.04); color: inherit; text-decoration: none; }
+    .ui a:hover { border-color: rgba(255,255,255,.35); }
+  </style>
+</head>
+<body>
+  <canvas></canvas>
+  <div class="ui"><a href="../../#projects">← back</a><span>click / drag to spawn orbs</span></div>
+  <script>
+    const c = document.querySelector("canvas"), ctx = c.getContext("2d");
+    let W, H, orbs = [], down = false;
+    const size = () => { const d = Math.min(devicePixelRatio, 2); W = innerWidth; H = innerHeight; c.width = W * d; c.height = H * d; ctx.setTransform(d, 0, 0, d, 0, 0); };
+    addEventListener("resize", size); size();
+
+    const add = (x, y) => {
+      orbs.push({ x, y, vx: (Math.random() - .5) * 8, vy: (Math.random() - .5) * 8 - 4, r: 8 + Math.random() * 18, h: Math.random() * 360 });
+      if (orbs.length > 250) orbs.shift();
+    };
+    c.addEventListener("pointerdown", e => { down = true; add(e.clientX, e.clientY); });
+    c.addEventListener("pointermove", e => down && add(e.clientX, e.clientY));
+    addEventListener("pointerup", () => (down = false));
+    for (let i = 0; i < 25; i++) add(Math.random() * W, Math.random() * H * .5);
+
+    (function frame() {
+      ctx.fillStyle = "rgba(7,7,12,.25)"; ctx.fillRect(0, 0, W, H); // motion trails
+      ctx.globalCompositeOperation = "lighter";
+      for (const o of orbs) {
+        o.vy += .25; o.x += o.vx; o.y += o.vy; o.vx *= .995;
+        if (o.y + o.r > H) { o.y = H - o.r; o.vy *= -.82; }
+        if (o.x - o.r < 0 || o.x + o.r > W) { o.vx *= -1; o.x = Math.max(o.r, Math.min(W - o.r, o.x)); }
+        const g = ctx.createRadialGradient(o.x, o.y, 0, o.x, o.y, o.r * 2);
+        g.addColorStop(0, `hsla(${o.h},95%,70%,.9)`); g.addColorStop(1, `hsla(${o.h},95%,60%,0)`);
+        ctx.fillStyle = g; ctx.beginPath(); ctx.arc(o.x, o.y, o.r * 2, 0, Math.PI * 2); ctx.fill();
+      }
+      ctx.globalCompositeOperation = "source-over";
+      requestAnimationFrame(frame);
+    })();
+  </script>
+</body>
+</html>
