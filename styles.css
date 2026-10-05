@@ -102,18 +102,29 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   padding-block: 12px;
 }
 .logo {
-  display: grid; place-items: center; width: 42px; height: 42px;
-  font: 700 0.95rem var(--font-display); letter-spacing: -0.02em;
-  border: 1px solid var(--border); border-radius: 12px; background: var(--surface);
-  transition: transform 0.3s var(--ease-out), border-color 0.3s;
+  display: block; padding: 8px 4px; color: var(--text);
+  transition: transform 0.3s var(--ease-out), color 0.3s;
 }
-.logo:hover { border-color: var(--border-hi); }
-.nav nav { display: flex; gap: 4px; }
-.nav nav a {
+.logo:hover { color: var(--accent); }
+.logo-mark { display: block; width: 60px; height: 27px; }
+.nav-links { display: flex; gap: 4px; }
+.nav-links a {
   padding: 8px 14px; border-radius: 999px; color: var(--muted); font-size: 0.92rem;
   transition: color 0.2s, background-color 0.2s;
 }
-.nav nav a:hover, .nav nav a.active, .nav nav a[aria-current="page"] { color: var(--text); background: var(--surface-2); }
+.nav-links a:hover, .nav-links a.active, .nav-links a[aria-current="page"] { color: var(--text); background: var(--surface-2); }
+/* first letters spell W·A·R·J·R·I */
+.nav-links .ini {
+  font: 600 1.22em / 1 var(--font-display); color: var(--text);
+  letter-spacing: -0.01em; margin-right: 0.04em;
+}
+
+/* inner pages (resume, JS, rankings) share this title style */
+.page-head { padding: 140px 0 40px; }
+.page-main { min-height: calc(100vh - 110px); }
+.resume-placeholder { margin: 28px 0 8px; }
+.hero-name.page-title { font-size: clamp(3rem, 8.5vw, 6.8rem); margin: 24px 0 18px; }
+.lede { max-width: 44ch; color: var(--muted); font-size: clamp(1rem, 1.6vw, 1.15rem); margin: 0 0 20px; }
 
 /* ============ Hero ============ */
 .hero {
@@ -480,6 +491,8 @@ h2 {
   padding: 28px 0 40px; border-top: 1px solid var(--border); color: var(--dim); font-size: 0.9rem;
 }
 .footer a:hover { color: var(--text); }
+.footer-brand { display: inline-flex; align-items: center; gap: 12px; }
+.footer-mark { display: block; width: 36px; height: 16px; color: var(--muted); }
 .toast {
   position: fixed; bottom: 24px; left: 50%; z-index: 80; pointer-events: none;
   translate: -50% 20px; opacity: 0;
@@ -496,9 +509,8 @@ h2 {
 @media (max-width: 520px) {
   .no-text .stats { grid-template-columns: repeat(2, 1fr); }
   .no-text .stat:last-child:nth-child(odd) { grid-column: 1 / -1; }
-  .nav nav { gap: 2px; }
-  .nav nav a { padding: 7px 9px; font-size: 0.84rem; }
-  .logo { width: 38px; height: 38px; }
+  .logo-mark { width: 50px; height: 22.5px; }
+  .page-head { padding-top: 116px; }
   .hero { padding-top: 110px; }
   .stats { gap: 10px; }
   .stat { padding: 16px; }
@@ -507,8 +519,15 @@ h2 {
   .footer { justify-content: center; text-align: center; }
 }
 
+/* phones: the nav shrinks to just the initials, W A R J R I */
+@media (max-width: 720px) {
+  .nav-links { gap: 0; }
+  .nav-links a { padding: 8px 10px; }
+  .nav-links .rest { display: none; }
+  .nav-links .ini { font-size: 1.15rem; margin: 0; }
+}
 @media (max-width: 360px) {
-  .nav nav a { padding: 6px 6px; font-size: 0.8rem; }
+  .nav-links a { padding: 8px 7px; }
 }
 
 /* ============ Reduced motion ============ */

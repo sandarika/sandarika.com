@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>JS · Components &amp; Fonts — Sandi Warjri</title>
+  <meta name="description" content="Every component, font and color sandarika.com is built from." />
+  <meta name="theme-color" content="#07070c" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="albums.css" />
+  <link rel="stylesheet" href="design.css" />
+  <script src="data.js" defer></script>
+  <script src="common.js" defer></script>
+  <script src="design-page.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#fonts">Skip to fonts</a>
+  <div class="progress" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="nav">
+    <a class="logo magnetic" href="index.html" aria-label="Sandi Warjri, home"><svg class="logo-mark" viewBox="8 30 84 38" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 50 C18 32 30 32 34 50 C38 68 50 68 54 50 C56 41 58 35 60.5 35 C63 35 64.5 52 66.3 60.5 C67 63.8 68.4 63.8 69.1 60.5 C70.6 53 72 41 74 41 C76 41 77.4 53 78.9 60.5 C79.6 63.8 81 63.8 81.7 60.5 C83.3 53 85 38 88 34"/></svg></a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="index.html#projects" aria-label="Work"><span class="ini">W</span><span class="rest">ork</span></a>
+      <a href="index.html#about" aria-label="About"><span class="ini">A</span><span class="rest">bout</span></a>
+      <a href="resume.html" aria-label="Resume"><span class="ini">R</span><span class="rest">esume</span></a>
+      <a href="design.html" aria-label="JS: components and fonts" aria-current="page"><span class="ini">J</span><span class="rest">S</span></a>
+      <a href="albums.html" aria-label="Rankings"><span class="ini">R</span><span class="rest">ankings</span></a>
+      <a href="index.html#info" aria-label="Info"><span class="ini">I</span><span class="rest">nfo</span></a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="page-head container">
+      <p class="kicker mono intro" style="--d:0ms">J — JS</p>
+      <h1 class="hero-name page-title" data-split>Components &amp; fonts</h1>
+      <p class="lede intro" style="--d:550ms">Every piece this site is built from, in one place.</p>
+    </section>
+
+    <!-- FONTS -->
+    <section id="fonts" class="ds-section container">
+      <header class="section-head">
+        <p class="kicker mono">01 — Fonts</p>
+        <h2>Type</h2>
+      </header>
+      <div class="ds-grid">
+        <div class="ds-panel font-card">
+          <p class="mono ds-label">Display · Space Grotesk</p>
+          <p class="specimen f-display" style="font-weight: 700">Sandi Warjri</p>
+          <p class="glyphs f-display">ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789</p>
+          <div class="weights f-display">
+            <span style="font-weight: 500">Aa<small>500</small></span>
+            <span style="font-weight: 600">Aa<small>600</small></span>
+            <span style="font-weight: 700">Aa<small>700</small></span>
+          </div>
+          <p class="mono ds-label">Headings, the nav initials, numbers</p>
+        </div>
+        <div class="ds-panel font-card">
+          <p class="mono ds-label">Body · Inter</p>
+          <p class="specimen f-body" style="font-weight: 500">Learner.</p>
+          <p class="glyphs f-body">ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789</p>
+          <div class="weights f-body">
+            <span style="font-weight: 400">Aa<small>400</small></span>
+            <span style="font-weight: 500">Aa<small>500</small></span>
+            <span style="font-weight: 600">Aa<small>600</small></span>
+          </div>
+          <p class="mono ds-label">Paragraphs, buttons, links</p>
+        </div>
+        <div class="ds-panel font-card">
+          <p class="mono ds-label">Mono · JetBrains Mono</p>
+          <p class="specimen f-mono" style="font-weight: 500; font-size: 2.4rem">// right now</p>
+          <p class="glyphs f-mono">ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789</p>
+          <div class="weights f-mono">
+            <span style="font-weight: 400">Aa<small>400</small></span>
+            <span style="font-weight: 500">Aa<small>500</small></span>
+          </div>
+          <p class="mono ds-label">Labels, kickers, the footer</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- TYPE SCALE -->
+    <section id="type" class="ds-section container">
+      <header class="section-head">
+        <p class="kicker mono">02 — Type scale</p>
+        <h2>Sizes</h2>
+      </header>
+      <div class="ds-panel">
+        <div class="type-row"><p class="mono ds-label">Hero name · 3–8.5rem</p><span class="hero-name">Sandi</span></div>
+        <div class="type-row"><p class="mono ds-label">Page title · 3–6.8rem</p><span class="hero-name page-title">Rankings</span></div>
+        <div class="type-row"><p class="mono ds-label">Section heading · 2.3–4rem</p><h2 aria-hidden="true">Things I've built</h2></div>
+        <div class="type-row"><p class="mono ds-label">Tagline · 1–1.12rem</p><p class="hero-tagline">Learner.</p></div>
+        <div class="type-row"><p class="mono ds-label">Body · 16px</p><p>Every piece this site is built from, in one place.</p></div>
+        <div class="type-row"><p class="mono ds-label">Kicker · mono</p><p class="kicker mono">01 — Work</p></div>
+        <div class="type-row"><p class="mono ds-label">Label · mono</p><p class="mono" style="color: var(--muted)">// right now</p></div>
+      </div>
+    </section>
+
+    <!-- COLOR -->
+    <section id="color" class="ds-section container">
+      <header class="section-head">
+        <p class="kicker mono">03 — Color</p>
+        <h2>Palette</h2>
+      </header>
+      <div class="swatches">
+        <div class="swatch"><div class="swatch-chip" style="background: var(--bg)"></div><div class="swatch-meta"><b>Background</b><span class="mono">--bg · #07070c</span></div></div>
+        <div class="swatch"><div class="swatch-chip" style="background: var(--bg-2)"></div><div class="swatch-meta"><b>Background 2</b><span class="mono">--bg-2 · #0d0d16</span></div></div>
+        <div class="swatch"><div class="swatch-chip" style="background: var(--surface-2)"></div><div class="swatch-meta"><b>Surface</b><span class="mono">--surface · white 3.5–6.5%</span></div></div>
+        <div class="swatch"><div class="swatch-chip" style="background: var(--text)"></div><div class="swatch-meta"><b>Text</b><span class="mono">--text · #eeedf7</span></div></div>
+        <div class="swatch"><div class="swatch-chip" style="background: var(--muted)"></div><div class="swatch-meta"><b>Muted</b><span class="mono">--muted · #9b9ab4</span></div></div>
+        <div class="swatch"><div class="swatch-chip" style="background: var(--dim)"></div><div class="swatch-meta"><b>Dim</b><span class="mono">--dim · #64637d</span></div></div>
+        <div class="swatch"><div class="swatch-chip" style="background: var(--accent)"></div><div class="swatch-meta"><b>Violet</b><span class="mono">--accent · #8b6cff</span></div></div>
+        <div class="swatch"><div class="swatch-chip" style="background: var(--accent-2)"></div><div class="swatch-meta"><b>Teal</b><span class="mono">--accent-2 · #2ee6c9</span></div></div>
+        <div class="swatch"><div class="swatch-chip" style="background: var(--accent-3)"></div><div class="swatch-meta"><b>Pink</b><span class="mono">--accent-3 · #ff5d8f</span></div></div>
+        <div class="swatch"><div class="swatch-chip" style="background: #f37ebb"></div><div class="swatch-meta"><b>Tab icon</b><span class="mono">favicon · #f37ebb</span></div></div>
+      </div>
+    </section>
+
+    <!-- COMPONENTS -->
+    <section id="components" class="ds-section container">
+      <header class="section-head">
+        <p class="kicker mono">04 — Components</p>
+        <h2>Building blocks</h2>
+      </header>
+      <div class="ds-grid">
+
+        <div class="ds-panel">
+          <p class="mono ds-label">Logo</p>
+          <div class="logo-sizes">
+            <svg viewBox="8 30 84 38" style="width: 140px; height: 63px" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 50 C18 32 30 32 34 50 C38 68 50 68 54 50 C56 41 58 35 60.5 35 C63 35 64.5 52 66.3 60.5 C67 63.8 68.4 63.8 69.1 60.5 C70.6 53 72 41 74 41 C76 41 77.4 53 78.9 60.5 C79.6 63.8 81 63.8 81.7 60.5 C83.3 53 85 38 88 34"/></svg>
+            <svg viewBox="8 30 84 38" style="width: 60px; height: 27px" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 50 C18 32 30 32 34 50 C38 68 50 68 54 50 C56 41 58 35 60.5 35 C63 35 64.5 52 66.3 60.5 C67 63.8 68.4 63.8 69.1 60.5 C70.6 53 72 41 74 41 C76 41 77.4 53 78.9 60.5 C79.6 63.8 81 63.8 81.7 60.5 C83.3 53 85 38 88 34"/></svg>
+            <span class="logo-tile"><img src="favicon.svg" alt="Browser tab icon" width="40" height="40" /></span>
+          </div>
+          <p class="mono ds-label">logo.svg · logo-light.svg · favicon.svg</p>
+        </div>
+
+        <div class="ds-panel">
+          <p class="mono ds-label">Buttons</p>
+          <div class="ds-demo">
+            <a class="btn btn-primary magnetic" href="#components">See my work <span class="arrow" aria-hidden="true">→</span></a>
+            <a class="btn btn-ghost magnetic" href="#components">Say hi</a>
+            <button class="btn btn-ghost btn-sm magnetic" type="button" data-demo-toast>Show a toast</button>
+          </div>
+        </div>
+
+        <div class="ds-panel">
+          <p class="mono ds-label">Navigation</p>
+          <nav class="nav-links" aria-label="Navigation sample">
+            <a href="index.html#projects"><span class="ini">W</span><span class="rest">ork</span></a>
+            <a href="index.html#about"><span class="ini">A</span><span class="rest">bout</span></a>
+            <a href="resume.html"><span class="ini">R</span><span class="rest">esume</span></a>
+            <a href="design.html" aria-current="page"><span class="ini">J</span><span class="rest">S</span></a>
+            <a href="albums.html"><span class="ini">R</span><span class="rest">ankings</span></a>
+            <a href="index.html#info"><span class="ini">I</span><span class="rest">nfo</span></a>
+          </nav>
+        </div>
+
+        <div class="ds-panel">
+          <p class="mono ds-label">Filter chips</p>
+          <div class="ds-demo" data-demo-chips>
+            <button class="chip" type="button" aria-pressed="true">All<span class="count">6</span></button>
+            <button class="chip" type="button" aria-pressed="false">Web<span class="count">2</span></button>
+            <button class="chip" type="button" aria-pressed="false">Data<span class="count">3</span></button>
+            <button class="chip" type="button" aria-pressed="false">Game<span class="count">1</span></button>
+          </div>
+        </div>
+
+        <div class="ds-panel">
+          <p class="mono ds-label">Pill &amp; text link</p>
+          <div class="ds-demo">
+            <p class="eyebrow mono"><span class="pulse"></span>on repeat</p>
+          </div>
+          <a class="text-link" href="albums.html">I'm always listening <span class="arrow" aria-hidden="true">→</span></a>
+        </div>
+
+        <div class="ds-panel">
+          <p class="mono ds-label">Stat tiles</p>
+          <div class="stats">
+            <div class="stat"><div class="stat-value">4.0</div><div class="stat-label">GPA</div></div>
+            <div class="stat"><div class="stat-value">2</div><div class="stat-label">hackathon wins</div></div>
+          </div>
+        </div>
+
+        <div class="ds-panel">
+          <p class="mono ds-label">List card</p>
+          <div class="now">
+            <p class="mono now-title">// right now</p>
+            <ul>
+              <li>Studying: CS + Business + Math at UNL</li>
+              <li>Mentoring: young coders at Girls Code Lincoln</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="ds-panel">
+          <p class="mono ds-label">Project card (sample)</p>
+          <article class="card" style="--h: 255">
+            <div class="card-media"><div class="art"></div><span class="art-letter" aria-hidden="true">P</span></div>
+            <div class="card-body">
+              <div class="card-meta mono"><span>2026 · Web</span><span class="badge">★ featured</span></div>
+              <h3>Project title</h3>
+              <p>One or two sentences about the project.</p>
+              <ul class="tags"><li>Python</li><li>React</li></ul>
+              <div class="card-links"><a href="#components">Live <span class="arrow" aria-hidden="true">↗</span></a><a href="#components">Code <span class="arrow" aria-hidden="true">↗</span></a></div>
+            </div>
+          </article>
+        </div>
+
+        <div class="ds-panel">
+          <p class="mono ds-label">Album card (sample · hover it)</p>
+          <div class="album-card ds-album" style="--h: 170">
+            <div class="album-art">
+              <div class="glow"></div>
+              <div class="vinyl" aria-hidden="true"><div class="disc"><div class="disc-label"></div></div></div>
+              <div class="cover"><div class="art"></div><span class="art-letter" aria-hidden="true">A</span></div>
+              <span class="rank">#1</span>
+            </div>
+            <div class="album-info">
+              <h3>Album title</h3>
+              <p class="artist">Artist · 2026</p>
+              <div class="fav">
+                <span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                <div><span class="fav-label mono">fav song</span><span class="fav-song">Favorite song</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ds-panel">
+          <p class="mono ds-label">Contact</p>
+          <div class="contact-card">
+            <span class="email-link">name@example.com</span>
+            <button class="btn btn-ghost btn-sm magnetic" type="button" data-demo-copy>Copy</button>
+          </div>
+          <div class="socials" style="justify-content: flex-start; margin-top: 0">
+            <a href="https://www.linkedin.com/in/sandarika" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">↗</span></a>
+            <a href="https://github.com/sandarika" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+
+        <div class="ds-panel">
+          <p class="mono ds-label">Empty state</p>
+          <div class="empty">
+            <p class="mono empty-line"><span class="prompt">$</span> git push projects<span class="caret"></span></p>
+            <p class="empty-note">New projects are on the way.</p>
+          </div>
+        </div>
+
+        <div class="ds-panel wide">
+          <p class="mono ds-label">Tech ticker</p>
+          <div class="marquee">
+            <div class="marquee-track" aria-hidden="true"><span>Python</span><span>Java</span><span>JavaScript</span><span>React</span><span>FastAPI</span><span>SQL</span><span>Git</span><span>Docker</span><span>Python</span><span>Java</span><span>JavaScript</span><span>React</span><span>FastAPI</span><span>SQL</span><span>Git</span><span>Docker</span></div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer container">
+    <span class="footer-brand"><svg class="footer-mark" viewBox="8 30 84 38" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 50 C18 32 30 32 34 50 C38 68 50 68 54 50 C56 41 58 35 60.5 35 C63 35 64.5 52 66.3 60.5 C67 63.8 68.4 63.8 69.1 60.5 C70.6 53 72 41 74 41 C76 41 77.4 53 78.9 60.5 C79.6 63.8 81 63.8 81.7 60.5 C83.3 53 85 38 88 34"/></svg>© <span data-year></span> <span data-name-plain></span></span>
+    <span class="mono">hand-prompted · &lt;3 claude</span>
+    <a href="#top" class="mono">back to top ↑</a>
+  </footer>
+
+  <div class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

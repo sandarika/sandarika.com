@@ -49,10 +49,14 @@ Push to `main` and GitHub Pages redeploys in about a minute. Browsers may keep t
 | --- | --- |
 | `data.js` | Home page content |
 | `albums.js` | Album rankings (updated by the `/albums` skill) |
-| `index.html`, `home.js` | Home page |
-| `albums.html`, `albums.css`, `albums-page.js` | Albums page |
-| `common.js`, `styles.css` | Shared by both pages (nav, animations, theme) |
+| `index.html`, `home.js` | Home page (Work, About and Info sections) |
+| `resume.html` | Resume page (placeholder for now; see the comment inside it) |
+| `design.html`, `design.css`, `design-page.js` | "JS" page: every component, font and color |
+| `albums.html`, `albums.css`, `albums-page.js` | Rankings page |
+| `common.js`, `styles.css` | Shared by every page (nav, animations, theme) |
 | `404.html` | Page shown for broken links |
+| `favicon.svg` | Browser tab icon (the logo in `#f37ebb`) |
+| `logo.svg`, `logo-light.svg` | The logo on a transparent background, in dark and light ink, for use anywhere |
 
 ## Hidden extras
 

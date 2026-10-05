@@ -8,8 +8,6 @@
   background: linear-gradient(transparent, var(--bg));
 }
 .ah-inner { display: grid; grid-template-columns: 1.15fr 1fr; gap: 48px; align-items: center; }
-.page-title { font-size: clamp(3rem, 8.5vw, 6.8rem); margin: 24px 0 18px; }
-.lede { max-width: 44ch; color: var(--muted); font-size: clamp(1rem, 1.6vw, 1.15rem); margin: 0 0 20px; }
 .ah-meta { color: var(--dim); margin: 0; }
 .ah-meta strong { color: var(--accent-2); font-weight: 500; }
 .ah-meta .dot { margin: 0 6px; }

@@ -6,7 +6,6 @@
 
 window.SITE = {
   name: "Sandi Warjri",
-  initials: "SW",                       // shown in the logo + browser tab icon
   tagline:
     "Learner.",
 

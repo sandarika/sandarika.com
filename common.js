@@ -1,4 +1,4 @@
-/* Shared by every page: nav, tab icon, scroll progress, reveal-on-scroll,
+/* Shared by every page: nav, footer, scroll progress, reveal-on-scroll,
    number counters, magnetic buttons, cursor ring and toasts.
    Page scripts (home.js, albums-page.js) use these through window.Site. */
 window.Site = (() => {
@@ -12,16 +12,10 @@ window.Site = (() => {
   const esc = (s = "") =>
     String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
 
-  /* ---------- Name, initials, tab icon, footer ---------- */
+  /* ---------- Name, footer ---------- */
   const name = SITE.name || "Sandi Warjri";
-  const initials = SITE.initials || name.split(/\s+/).map((w) => w[0]).join("").slice(0, 2).toUpperCase();
-  $$("[data-initials]").forEach((el) => (el.textContent = initials));
   $$("[data-name-plain]").forEach((el) => (el.textContent = name));
   $$("[data-year]").forEach((el) => (el.textContent = new Date().getFullYear()));
-
-  const favicon = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='#8b6cff'/><stop offset='1' stop-color='#2ee6c9'/></linearGradient></defs><rect width='64' height='64' rx='16' fill='url(#g)'/><text x='50%' y='54%' dominant-baseline='middle' text-anchor='middle' font-family='Arial,sans-serif' font-weight='700' font-size='26' fill='#fff'>${esc(initials)}</text></svg>`;
-  const iconLink = $('link[rel="icon"]');
-  if (iconLink) iconLink.href = "data:image/svg+xml," + encodeURIComponent(favicon);
 
   /* ---------- Toast ---------- */
   const toastEl = $(".toast");
@@ -151,6 +145,9 @@ window.Site = (() => {
       })();
     }
   }
+
+  // Inner-page titles marked data-split rise in letter by letter
+  $$("[data-split]").forEach((el) => splitLetters(el, el.textContent.trim(), 250));
 
   // Page scripts run after this file; reveal whatever static content exists now.
   reveal();

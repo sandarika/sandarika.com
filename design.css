@@ -1,0 +1,57 @@
+/* ============ JS page: components & fonts (loads after styles.css + albums.css) ============ */
+
+.ds-section { padding: clamp(56px, 8vw, 96px) 0; border-top: 1px solid var(--border); }
+.ds-section .section-head { margin-bottom: 28px; }
+.ds-label { color: var(--dim); margin: 0; }
+
+.ds-grid {
+  display: grid; gap: 16px;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 330px), 1fr));
+}
+.ds-panel {
+  display: flex; flex-direction: column; gap: 18px; padding: 22px;
+  border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface);
+}
+.ds-panel.wide { grid-column: 1 / -1; }
+.ds-demo { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+
+/* Fonts */
+.font-card .specimen { margin: 0; font-size: clamp(2.6rem, 6vw, 3.8rem); line-height: 1; color: var(--text); letter-spacing: -0.03em; }
+.font-card .glyphs { margin: 0; color: var(--muted); word-break: break-word; }
+.font-card .weights { display: flex; flex-wrap: wrap; gap: 18px; font-size: 1.5rem; color: var(--text); }
+.font-card .weights span { display: inline-flex; flex-direction: column; gap: 2px; }
+.font-card .weights small { font: 400 0.7rem var(--font-mono); color: var(--dim); }
+.f-display { font-family: var(--font-display); }
+.f-body { font-family: var(--font-body); }
+.f-mono { font-family: var(--font-mono); }
+
+/* Type scale */
+.type-row {
+  display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 20px; align-items: baseline;
+  padding: 18px 0; border-bottom: 1px solid var(--border);
+}
+.type-row:last-child { border-bottom: 0; }
+.type-row .hero-name, .type-row h2, .type-row p { margin: 0; }
+
+/* Color swatches */
+.swatches { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+.swatch { overflow: hidden; border: 1px solid var(--border); border-radius: 14px; background: var(--bg-2); }
+.swatch-chip { height: 76px; border-bottom: 1px solid var(--border); }
+.swatch-meta { display: flex; flex-direction: column; gap: 2px; padding: 10px 12px; }
+.swatch-meta b { font: 600 0.9rem var(--font-display); color: var(--text); }
+.swatch-meta span { color: var(--dim); }
+
+/* Logo */
+.logo-sizes { display: flex; flex-wrap: wrap; align-items: center; gap: 28px; color: var(--text); }
+.logo-sizes svg { display: block; }
+.logo-tile { display: grid; place-items: center; width: 64px; height: 64px; border-radius: 14px; background: #f3f3f6; }
+
+/* Component demos that need a little room */
+.ds-panel .card { max-width: 360px; }
+.ds-album { width: 200px; margin: 12px 0 4px 10px; }
+.ds-panel .marquee { margin: 0 -22px; }
+.ds-panel .nav-links { flex-wrap: wrap; }
+
+@media (max-width: 560px) {
+  .type-row { grid-template-columns: 1fr; gap: 6px; }
+}
