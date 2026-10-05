@@ -17,6 +17,12 @@ window.Site = (() => {
   $$("[data-name-plain]").forEach((el) => (el.textContent = name));
   $$("[data-year]").forEach((el) => (el.textContent = new Date().getFullYear()));
 
+  /* ---------- Clean addresses: show /design, not /design.html ---------- */
+  if (location.protocol.startsWith("http") && /\.html$/.test(location.pathname)) {
+    const clean = location.pathname.replace(/(index)?\.html$/, "") || "/";
+    history.replaceState(null, "", clean + location.search + location.hash);
+  }
+
   /* ---------- Toast ---------- */
   const toastEl = $(".toast");
   let toastTimer;
@@ -144,6 +150,76 @@ window.Site = (() => {
         requestAnimationFrame(follow);
       })();
     }
+  }
+
+  /* ---------- Hidden: tap Control for confetti from the bottom corners ----------
+     Only a lone tap counts, so shortcuts like Ctrl+C or Ctrl+click don't set it off. */
+  const CONFETTI = [
+    "#8b6cff", "#b5a3ff", "#5b3df5",  // violets
+    "#2ee6c9", "#8ff5e4", "#17b39c",  // teals
+    "#ff5d8f", "#ff9ab8", "#f37ebb",  // pinks
+    "#d36bd8",                        // orchid, between violet and pink
+  ];
+  let ctrlAlone = false;
+  addEventListener("keydown", (e) => {
+    if (e.key === "Control") { if (!e.repeat) ctrlAlone = true; }
+    else ctrlAlone = false;
+  });
+  addEventListener("keyup", (e) => {
+    if (e.key === "Control" && ctrlAlone) confetti();
+    ctrlAlone = false;
+  });
+  ["pointerdown", "wheel", "blur"].forEach((type) => addEventListener(type, () => (ctrlAlone = false), { passive: true }));
+
+  let confettiCanvas, confettiCtx, confettiParts = [], confettiRaf = 0;
+  function confetti() {
+    if (reduceMotion) return;
+    if (!confettiCanvas) {
+      confettiCanvas = document.createElement("canvas");
+      confettiCanvas.className = "confetti";
+      confettiCanvas.setAttribute("aria-hidden", "true");
+      document.body.appendChild(confettiCanvas);
+      confettiCtx = confettiCanvas.getContext("2d");
+    }
+    const W = innerWidth, H = innerHeight, dpr = Math.min(devicePixelRatio || 1, 2);
+    confettiCanvas.width = W * dpr;
+    confettiCanvas.height = H * dpr;
+    confettiCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const power = Math.max(W, H) / 60;
+    for (const side of [-1, 1]) {            // -1 = bottom-left corner, 1 = bottom-right
+      for (let i = 0; i < 70; i++) {
+        const angle = ((-90 - side * (15 + Math.random() * 40)) * Math.PI) / 180; // up and inward
+        const speed = power * (0.55 + Math.random() * 0.6);
+        confettiParts.push({
+          x: side < 0 ? -8 : W + 8, y: H + 8,
+          vx: Math.cos(angle) * speed, vy: Math.sin(angle) * speed,
+          r: 3 + Math.random() * 4.5,
+          color: CONFETTI[(Math.random() * CONFETTI.length) | 0],
+          life: 1, fade: 0.006 + Math.random() * 0.006,
+        });
+      }
+    }
+    if (!confettiRaf) confettiRaf = requestAnimationFrame(confettiFrame);
+  }
+  function confettiFrame() {
+    const ctx = confettiCtx;
+    ctx.clearRect(0, 0, innerWidth, innerHeight);
+    confettiParts = confettiParts.filter((p) => p.life > 0 && p.y < innerHeight + 40);
+    for (const p of confettiParts) {
+      p.vy += 0.32;                          // gravity
+      p.vx *= 0.99;
+      p.vy *= 0.99;
+      p.x += p.vx;
+      p.y += p.vy;
+      p.life -= p.fade;
+      ctx.globalAlpha = Math.min(1, p.life * 2);
+      ctx.fillStyle = p.color;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+    confettiRaf = confettiParts.length ? requestAnimationFrame(confettiFrame) : 0;
   }
 
   // Inner-page titles marked data-split rise in letter by letter

@@ -28,10 +28,10 @@ To host a web project on this site, put its files in `projects/<name>/` and set 
 ## Preview locally
 
 ```bash
-python -m http.server 8000
+python serve.py
 ```
 
-Then open http://localhost:8000. Double-clicking `index.html` also works.
+Then open http://localhost:8000. Links use clean addresses like `/design`, and `serve.py` handles those the same way GitHub Pages does. Plain `python -m http.server`, or double-clicking `index.html`, won't follow those links.
 
 ## Deploying
 
@@ -55,7 +55,8 @@ Push to `main` and GitHub Pages redeploys in about a minute. Browsers may keep t
 | `albums.html`, `albums.css`, `albums-page.js` | Rankings page |
 | `common.js`, `styles.css` | Shared by every page (nav, animations, theme) |
 | `404.html` | Page shown for broken links |
-| `favicon.svg` | Browser tab icon (the logo in `#f37ebb`) |
+| `favicon.svg` | Browser tab icon (the logo in `#ff5d8f`) |
+| `serve.py` | Local preview server with clean addresses |
 | `logo.svg`, `logo-light.svg` | The logo on a transparent background, in dark and light ink, for use anywhere |
 
 ## Hidden extras
@@ -64,3 +65,4 @@ Push to `main` and GitHub Pages redeploys in about a minute. Browsers may keep t
 - Type `party` anywhere on the home page.
 - Hover over the letters of the big headings.
 - Click the turntable on the albums page to lift the needle.
+- Tap Control on any page for confetti from the bottom corners.
