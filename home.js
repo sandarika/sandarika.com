@@ -19,17 +19,13 @@
 
   Site.splitLetters($("[data-name]"), name);
 
-  // Roles
-  const roles = SITE.roles && SITE.roles.length ? SITE.roles : ["cool things"];
-  $("[data-roles-sr]").textContent = `I build ${roles.join(", ")}.`;
-  $("[data-role]").textContent = roles[0];
-
   // Tech ticker (content repeated so the loop never shows a gap)
   const stack = SITE.stack || [];
   if (stack.length) {
     const reps = Math.max(1, Math.ceil(14 / stack.length));
     const half = Array.from({ length: reps }, () => stack).flat().map((t) => `<span>${esc(t)}</span>`).join("");
     $("[data-stack]").innerHTML = half + half;
+    $("[data-stack]").style.animationDuration = `${reps * stack.length * 2.6}s`; // same speed however long the list is
     $("[data-marquee]").setAttribute("aria-label", `Tools I use: ${stack.join(", ")}`);
     $("[data-marquee]").setAttribute("role", "img");
   } else {
@@ -123,8 +119,13 @@
     filtersEl.remove();
   }
 
-  // About
-  $("[data-about]").innerHTML = (SITE.about || []).map((p) => `<p>${esc(p)}</p>`).join("");
+  // About (without paragraphs, the stats + list spread across the full width)
+  if ((SITE.about || []).length) {
+    $("[data-about]").innerHTML = SITE.about.map((p) => `<p>${esc(p)}</p>`).join("");
+  } else {
+    $("[data-about]").remove();
+    $("[data-about-grid]").classList.add("no-text");
+  }
   $("[data-now]").innerHTML = (SITE.now || []).map((n) => `<li>${esc(n)}</li>`).join("");
   if (!(SITE.now || []).length) $(".now").remove();
   $("[data-stats]").innerHTML = (SITE.stats || [])
@@ -184,59 +185,7 @@
   $$("section[id]").forEach((s) => sectionSpy.observe(s));
 
   /* =========================================================
-     3. Text scramble for the rotating role
-     ========================================================= */
-  class Scramble {
-    constructor(el) {
-      this.el = el;
-      this.glyphs = "!<>-_\\/[]{}—=+*^?#01";
-      this.tick = this.tick.bind(this);
-    }
-    set(text) {
-      const from = this.el.textContent;
-      const len = Math.max(from.length, text.length);
-      this.queue = Array.from({ length: len }, (_, i) => {
-        const start = Math.floor(Math.random() * 18);
-        return { from: from[i] || "", to: text[i] || "", start, end: start + Math.floor(Math.random() * 18), ch: "" };
-      });
-      this.frame = 0;
-      cancelAnimationFrame(this.raf);
-      return new Promise((resolve) => {
-        this.resolve = resolve;
-        this.tick();
-      });
-    }
-    tick() {
-      let out = "";
-      let done = 0;
-      for (const q of this.queue) {
-        if (this.frame >= q.end) {
-          done++;
-          out += esc(q.to);
-        } else if (this.frame >= q.start) {
-          if (!q.ch || Math.random() < 0.3) q.ch = this.glyphs[Math.floor(Math.random() * this.glyphs.length)];
-          out += `<span class="dud">${esc(q.ch)}</span>`;
-        } else {
-          out += esc(q.from);
-        }
-      }
-      this.el.innerHTML = out;
-      if (done === this.queue.length) this.resolve();
-      else {
-        this.frame++;
-        this.raf = requestAnimationFrame(this.tick);
-      }
-    }
-  }
-  if (!reduceMotion && roles.length > 1) {
-    const fx = new Scramble($("[data-role]"));
-    let n = 0;
-    const next = () => fx.set(roles[++n % roles.length]).then(() => setTimeout(next, 2200));
-    setTimeout(next, 2800);
-  }
-
-  /* =========================================================
-     4. Project card tilt + spotlight
+     3. Project card tilt + spotlight
      ========================================================= */
   if (finePointer) {
     $$(".card").forEach((card) => {
@@ -262,7 +211,7 @@
   }
 
   /* =========================================================
-     5. Hero background: interactive particle constellation
+     4. Hero background: interactive particle constellation
      ========================================================= */
   const hero = $(".hero");
   const canvas = $(".hero-canvas");
@@ -428,7 +377,7 @@
   });
 
   /* =========================================================
-     6. Easter egg: type "party" anywhere 🎉
+     5. Easter egg: type "party" anywhere 🎉
      ========================================================= */
   let typed = "";
   addEventListener("keydown", (e) => {

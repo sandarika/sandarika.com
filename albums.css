@@ -155,10 +155,6 @@
   transition: transform 0.4s var(--ease-out);
 }
 .album-card:hover .rank { transform: translate(-3px, -3px) rotate(-6deg) scale(1.08); }
-.top .rank { color: #17120a; border-color: transparent; font-size: 1.15rem; }
-.top-1 .rank { background: linear-gradient(135deg, #fff1b8, #f2c94c 45%, #c8901c); box-shadow: 0 6px 24px -4px rgba(242, 201, 76, 0.6); }
-.top-2 .rank { background: linear-gradient(135deg, #ffffff, #cfd3dc 45%, #8d94a3); }
-.top-3 .rank { background: linear-gradient(135deg, #ffd9bd, #e09a62 45%, #a2582a); }
 
 /* info */
 .album-info h3 { font: 600 1.15rem / 1.25 var(--font-display); letter-spacing: -0.01em; margin: 0; }
@@ -201,6 +197,5 @@
   .album-grid { grid-template-columns: repeat(2, 1fr); gap: 40px 18px; }
   .album-info h3 { font-size: 1rem; }
   .rank { left: -6px; top: -10px; font-size: 0.85rem; padding: 4px 10px; }
-  .top .rank { font-size: 0.95rem; }
   .fav { gap: 8px; }
 }

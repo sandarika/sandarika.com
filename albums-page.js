@@ -50,7 +50,7 @@
              </div>`
           : "";
         return `
-        <li class="album-card reveal${rank <= 3 ? ` top top-${rank}` : ""}" style="--h:${hueAt(i)}; --d:${(i % 4) * 80}ms">
+        <li class="album-card reveal" style="--h:${hueAt(i)}; --d:${(i % 4) * 80}ms">
           <div class="album-art">
             <div class="glow"${bg}></div>
             <div class="vinyl" aria-hidden="true"><div class="disc"><div class="disc-label"${bg}></div></div></div>

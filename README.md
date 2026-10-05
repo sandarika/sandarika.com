@@ -15,7 +15,7 @@ Edit **`data.js`** only. The name, bio, links, stats, projects and albums on bot
    { rank: 1, title: "Album Title", artist: "Artist", favSong: "Favorite Song", image: "images/albums/blonde.jpg" },
    ```
 
-Albums sort by `rank` automatically (1 = best). The top three get gold, silver and bronze badges, and the #1 cover becomes the label on the spinning record at the top of the page. `artist` is optional. Leaving `image` empty gives a generated cover, and `image` can also be a full `https://` link.
+Albums sort by `rank` automatically (1 = best), and the #1 cover becomes the label on the spinning record at the top of the page. `artist` is optional. Leaving `image` empty gives a generated cover, and `image` can also be a full `https://` link.
 
 ### Add a project
 
