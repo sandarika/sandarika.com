@@ -4,18 +4,20 @@ Sandi Warjri's personal site: a home page with projects, about and contact, plus
 
 ## Updating the site
 
-Edit **`data.js`** only. The name, bio, links, stats, projects and albums on both pages all come from that file.
+The home page content (name, tagline, links, stats, projects) comes from **`data.js`**. The album rankings come from **`albums.js`**.
 
-### Add an album
+### Albums
 
-1. Put the cover image in `images/albums/` (for example `images/albums/blonde.jpg`).
-2. Add a line to `ALBUMS` in `data.js`:
+The easiest way is the `/albums` Claude Code skill. Tell it what you ranked, for example `/albums I just finished SOS by SZA, put it at #2, fav song Snooze`. It finds the album on YouTube Music, downloads the cover, re-ranks the list, and publishes the site.
 
-   ```js
-   { rank: 1, title: "Album Title", artist: "Artist", favSong: "Favorite Song", image: "images/albums/blonde.jpg" },
-   ```
+To edit by hand instead, each entry in `albums.js` looks like this:
 
-Albums sort by `rank` automatically (1 = best), and the #1 cover becomes the label on the spinning record at the top of the page. `artist` is optional. Leaving `image` empty gives a generated cover, and `image` can also be a full `https://` link.
+```json
+{ "rank": 1, "title": "Album Title", "artist": "Artist", "year": 2024, "favSong": "Favorite Song",
+  "image": "images/albums/cover.jpg", "link": "https://music.youtube.com/browse/..." }
+```
+
+Albums sort by `rank` (1 = best), and the #1 cover becomes the label on the spinning record at the top of the page. Cards open `link` when clicked. `albums.js` has to stay valid JSON: double quotes, and no trailing commas.
 
 ### Add a project
 
@@ -45,7 +47,8 @@ Push to `main` and GitHub Pages redeploys in about a minute. Browsers may keep t
 
 | File | What it is |
 | --- | --- |
-| `data.js` | All the content. Edit this one. |
+| `data.js` | Home page content |
+| `albums.js` | Album rankings (updated by the `/albums` skill) |
 | `index.html`, `home.js` | Home page |
 | `albums.html`, `albums.css`, `albums-page.js` | Albums page |
 | `common.js`, `styles.css` | Shared by both pages (nav, animations, theme) |
