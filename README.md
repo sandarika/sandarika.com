@@ -55,7 +55,7 @@ Push to `main` and GitHub Pages redeploys in about a minute. Browsers may keep t
 | `albums.html`, `albums.css`, `albums-page.js` | Rankings page |
 | `common.js`, `styles.css` | Shared by every page (nav, animations, theme) |
 | `404.html` | Page shown for broken links |
-| `favicon.svg` | Browser tab icon (the logo in `#ff5d8f`) |
+| `favicon.svg` | Browser tab icon (the logo in `#f16298`) |
 | `serve.py` | Local preview server with clean addresses |
 | `logo.svg`, `logo-light.svg` | The logo on a transparent background, in dark and light ink, for use anywhere |
 

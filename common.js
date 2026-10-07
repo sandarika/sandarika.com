@@ -157,7 +157,7 @@ window.Site = (() => {
   const CONFETTI = [
     "#8b6cff", "#b5a3ff", "#5b3df5",  // violets
     "#2ee6c9", "#8ff5e4", "#17b39c",  // teals
-    "#ff5d8f", "#ff9ab8", "#f37ebb",  // pinks
+    "#f16298", "#f7a1c1", "#c14e7a",  // pinks
     "#d36bd8",                        // orchid, between violet and pink
   ];
   let ctrlAlone = false;
