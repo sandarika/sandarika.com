@@ -38,6 +38,17 @@ window.ALBUMS = [
   },
   {
     "rank": 4,
+    "title": "The Divine Feminine (10th Anniversary)",
+    "artist": "Mac Miller",
+    "year": 2026,
+    "favSong": "Cinderella (feat. Ty Dolla $ign)",
+    "image": "images/albums/mac-miller-the-divine-feminine-10th-anniversary.jpg",
+    "link": "https://music.youtube.com/browse/MPREb_n9AIucDSzox",
+    "id": "MPREb_n9AIucDSzox",
+    "artistId": "UC52ZqHVQz5OoGhvbWiRal6g"
+  },
+  {
+    "rank": 5,
     "title": "you seem pretty sad for a girl so in love",
     "artist": "Olivia Rodrigo",
     "year": 2026,
@@ -48,7 +59,18 @@ window.ALBUMS = [
     "artistId": "UCE5XNpliPM-SmyFEp61tL_g"
   },
   {
-    "rank": 5,
+    "rank": 6,
+    "title": "Third Eye Blind",
+    "artist": "Third Eye Blind",
+    "year": 1997,
+    "favSong": "Semi-Charmed Life",
+    "image": "images/albums/third-eye-blind-third-eye-blind.jpg",
+    "link": "https://music.youtube.com/browse/MPREb_U4IU2tONKDR",
+    "id": "MPREb_U4IU2tONKDR",
+    "artistId": "UCBgOvSeegP11m_MIZab9oMg"
+  },
+  {
+    "rank": 7,
     "title": "HABIBTI (FOMO)",
     "artist": "Drake",
     "year": 2026,
@@ -57,5 +79,16 @@ window.ALBUMS = [
     "link": "https://music.youtube.com/browse/MPREb_L2anhKI1Knd",
     "id": "MPREb_L2anhKI1Knd",
     "artistId": "UCU6cE7pdJPc6DU2jSrKEsdQ"
+  },
+  {
+    "rank": 8,
+    "title": "Made In Chicago",
+    "artist": "Lalah Hathaway",
+    "year": 2026,
+    "favSong": "Rainbo",
+    "image": "images/albums/lalah-hathaway-made-in-chicago.jpg",
+    "link": "https://music.youtube.com/browse/MPREb_It56S7lEr7C",
+    "id": "MPREb_It56S7lEr7C",
+    "artistId": "UCkPiN8_ybZff4WhBhSyLrBg"
   }
 ];
