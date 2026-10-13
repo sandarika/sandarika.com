@@ -38,6 +38,17 @@ window.ALBUMS = [
   },
   {
     "rank": 4,
+    "title": "Lost Weekend",
+    "artist": "Phoebe Bridgers",
+    "year": 2026,
+    "favSong": "Never Going Back!",
+    "image": "images/albums/phoebe-bridgers-lost-weekend.jpg",
+    "link": "https://music.youtube.com/browse/MPREb_IrTVSodLnvP",
+    "id": "MPREb_IrTVSodLnvP",
+    "artistId": "UCprIJgC2-qqSHNVztFjRFmw"
+  },
+  {
+    "rank": 5,
     "title": "The Divine Feminine (10th Anniversary)",
     "artist": "Mac Miller",
     "year": 2026,
@@ -48,7 +59,7 @@ window.ALBUMS = [
     "artistId": "UC52ZqHVQz5OoGhvbWiRal6g"
   },
   {
-    "rank": 5,
+    "rank": 6,
     "title": "you seem pretty sad for a girl so in love",
     "artist": "Olivia Rodrigo",
     "year": 2026,
@@ -59,7 +70,7 @@ window.ALBUMS = [
     "artistId": "UCE5XNpliPM-SmyFEp61tL_g"
   },
   {
-    "rank": 6,
+    "rank": 7,
     "title": "Third Eye Blind",
     "artist": "Third Eye Blind",
     "year": 1997,
@@ -70,7 +81,7 @@ window.ALBUMS = [
     "artistId": "UCBgOvSeegP11m_MIZab9oMg"
   },
   {
-    "rank": 7,
+    "rank": 8,
     "title": "HABIBTI (FOMO)",
     "artist": "Drake",
     "year": 2026,
@@ -81,7 +92,7 @@ window.ALBUMS = [
     "artistId": "UCU6cE7pdJPc6DU2jSrKEsdQ"
   },
   {
-    "rank": 8,
+    "rank": 9,
     "title": "Made In Chicago",
     "artist": "Lalah Hathaway",
     "year": 2026,
