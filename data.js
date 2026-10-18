@@ -1,7 +1,7 @@
 /* =============================================================
    ✏️  EDIT THIS FILE TO UPDATE THE SITE
    Everything on the home page is generated from what's below
-   (album rankings are in albums.js). You never need to touch the HTML.
+   (rated albums are in albums.js). You never need to touch the HTML.
    ============================================================= */
 
 window.SITE = {
@@ -57,4 +57,4 @@ window.SITE = {
    ------------------------------------------------------------- */
 window.PROJECTS = [];
 
-// Album rankings live in albums.js (updated by the /albums Claude Code skill).
+// Rated albums live in albums.js (updated by the /albums Claude Code skill).

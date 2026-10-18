@@ -4,7 +4,7 @@ Sandi Warjri's personal site: a home page with projects, about and contact, plus
 
 ## Updating the site
 
-The home page content (name, tagline, links, stats, projects) comes from **`data.js`**. The album rankings come from **`albums.js`**.
+The home page content (name, tagline, links, stats, projects) comes from **`data.js`**. The rated albums come from **`albums.js`**.
 
 ### Albums
 
@@ -48,11 +48,11 @@ Push to `main` and GitHub Pages redeploys in about a minute. Browsers may keep t
 | File | What it is |
 | --- | --- |
 | `data.js` | Home page content |
-| `albums.js` | Album rankings (updated by the `/albums` skill) |
+| `albums.js` | Rated albums (updated by the `/albums` skill) |
 | `index.html`, `home.js` | Home page (Work, About and Info sections) |
 | `resume.html` | Resume page (placeholder for now; see the comment inside it) |
 | `design.html`, `design.css`, `design-page.js` | "JS" page: every component, font and color |
-| `albums.html`, `albums.css`, `albums-page.js` | Rankings page |
+| `albums.html`, `albums.css`, `albums-page.js` | Albums Rated page |
 | `common.js`, `styles.css` | Shared by every page (nav, animations, theme) |
 | `404.html` | Page shown for broken links |
 | `favicon.svg` | Browser tab icon (the logo in `#ff5d8f`) |

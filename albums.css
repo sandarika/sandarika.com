@@ -149,24 +149,14 @@
 .album-card:hover .vinyl { transform: translateX(30%); }
 .album-card:hover .disc { animation-play-state: running; }
 
-/* rank badge */
-.rank {
-  position: absolute; z-index: 2; left: -10px; top: -12px;
-  padding: 5px 12px; border-radius: 999px;
-  font: 700 1rem / 1.2 var(--font-display); letter-spacing: -0.02em;
-  color: var(--text); background: rgba(13, 13, 22, 0.8); border: 1px solid var(--border-hi);
-  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
-  transition: transform 0.4s var(--ease-out);
-}
-.album-card:hover .rank { transform: translate(-3px, -3px) rotate(-6deg) scale(1.08); }
-
 /* info */
 .album-info h3 { font: 600 1.15rem / 1.25 var(--font-display); letter-spacing: -0.01em; margin: 0; }
 .artist { color: var(--muted); margin: 2px 0 0; font-size: 0.92rem; }
 .fav { display: flex; align-items: center; gap: 10px; margin-top: 12px; }
 .fav-label { display: block; color: var(--dim); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; }
 .fav-song { display: block; color: var(--text); font-size: 0.92rem; }
+.released { margin: 10px 0 0; color: var(--muted); font-size: 0.78rem; }
+.released-label { color: var(--dim); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; margin-right: 4px; }
 
 /* little equalizer — paused at different heights, dances on hover */
 .eq { display: inline-flex; align-items: flex-end; gap: 2px; height: 16px; flex: none; }
@@ -201,6 +191,5 @@
   .ah { padding-top: 116px; }
   .album-grid { grid-template-columns: repeat(2, 1fr); gap: 40px 18px; }
   .album-info h3 { font-size: 1rem; }
-  .rank { left: -6px; top: -10px; font-size: 0.85rem; padding: 4px 10px; }
   .fav { gap: 8px; }
 }
