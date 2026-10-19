@@ -6,8 +6,6 @@
 
 window.SITE = {
   name: "Sandi Warjri",
-  tagline:
-    "Learner.",
 
   email: "sandarikaw@gmail.com",
   socials: [
@@ -15,27 +13,28 @@ window.SITE = {
     { label: "GitHub", url: "https://github.com/sandarika" },
   ],
 
-  // Scrolling ticker of languages, tools and skills
-  stack: [
-    "Python", "Java", "C", "C#", "SQL", "JavaScript", "HTML & CSS",
-    "React", "Next.js", "FastAPI", "ASP.NET", "SQLAlchemy", "Bootstrap",
-    "Git", "GitHub", "Docker", "Linux", "Bash", "MongoDB", "Postman", "VS Code", "Eclipse",
-    "Copilot", "Gemini", "ChatGPT", "Agile",
+  // The piano on the home page: one white key per experience, in this order.
+  // Each: role, org, when, note (a sentence), and optionally link.
+  experience: [
+    { role: "Student", org: "University of Nebraska–Lincoln · Raikes School", when: "now",
+      note: "Studying Computer Science, Business and Math, with a 4.0 GPA." },
+    { role: "Mentor", org: "Girls Code Lincoln", when: "now",
+      note: "Mentoring young coders." },
+    { role: "Advisor", org: "The Prairie Initiative", when: "now",
+      note: "Advising on responsible AI." },
+    { role: "Hackathon winner", org: "2 wins", when: "",
+      note: "Two hackathon wins, and counting." },
+    { role: "Album rater", org: "sandarika.com/albums", when: "always",
+      note: "Every album I've had on repeat, with my favourite song from each.", link: "/albums" },
   ],
 
-  // Paragraphs for the About section (leave empty to show just the stats + list)
-  about: [],
-
-  now: [
-    "Studying: CS + Business + Math at UNL",
-    "Mentoring: young coders at Girls Code Lincoln",
-    "Advising: responsible AI with The Prairie Initiative",
-  ],
-
-  stats: [
-    { value: 4.0, decimals: 1, label: "GPA" },
-    { value: 2, label: "hackathon wins" },
-    { value: 100, suffix: "%", label: "chance I'm procrastinating rn" },
+  // Credits in the liner notes (contact section)
+  linerNotes: [
+    { label: "Written, produced & performed by", text: "Sandi Warjri" },
+    { label: "Recorded at", text: "University of Nebraska–Lincoln · Raikes School" },
+    { label: "Instruments", text: "Python, Java, C#, JavaScript, SQL, React" },
+    { label: "Built with", text: "HTML, CSS, JavaScript & Claude" },
+    { label: "Special thanks", text: "You, for listening" },
   ],
 };
 

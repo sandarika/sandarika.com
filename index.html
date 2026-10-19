@@ -20,7 +20,7 @@
   <script src="home.js" defer></script>
 </head>
 <body>
-  <a class="skip" href="#about">Skip to content</a>
+  <a class="skip" href="#projects">Skip to content</a>
   <div class="progress" aria-hidden="true"></div>
   <div class="cursor-ring" aria-hidden="true"></div>
   <div class="grain" aria-hidden="true"></div>
@@ -29,7 +29,7 @@
     <a class="logo magnetic" href="#top" aria-label="Sandi Warjri, back to top"><svg class="logo-mark" viewBox="8 30 84 38" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 50 C18 32 30 32 34 50 C38 68 50 68 54 50 C56 41 58 35 60.5 35 C63 35 64.5 52 66.3 60.5 C67 63.8 68.4 63.8 69.1 60.5 C70.6 53 72 41 74 41 C76 41 77.4 53 78.9 60.5 C79.6 63.8 81 63.8 81.7 60.5 C83.3 53 85 38 88 34"/></svg></a>
     <nav class="nav-links" aria-label="Main">
       <a href="#projects" aria-label="Work"><span class="ini">W</span><span class="rest">ork</span></a>
-      <a href="#about" aria-label="About"><span class="ini">A</span><span class="rest">bout</span></a>
+      <a href="#anthology" aria-label="Anthology: experience"><span class="ini">A</span><span class="rest">nthology</span></a>
       <a href="/resume" aria-label="Resume"><span class="ini">R</span><span class="rest">esume</span></a>
       <a href="/design" aria-label="JS: components and fonts"><span class="ini">J</span><span class="rest">S</span></a>
       <a href="/albums" aria-label="Rated"><span class="ini">R</span><span class="rest">ated</span></a>
@@ -38,66 +38,75 @@
   </header>
 
   <main id="top">
-    <!-- HERO -->
+    <!-- HERO: the logo drawn as one long wave you can pluck -->
     <section class="hero">
       <canvas class="hero-canvas" aria-hidden="true"></canvas>
       <div class="aurora" aria-hidden="true"><span></span><span></span><span></span></div>
 
       <div class="hero-inner container">
         <h1 class="hero-name" data-name>Sandi Warjri</h1>
-        <p class="hero-tagline intro" style="--d:550ms" data-tagline></p>
-        <div class="hero-cta intro" style="--d:700ms">
+        <div class="hero-cta intro" style="--d:550ms">
           <a class="btn btn-primary magnetic" href="#projects">See my work <span class="arrow" aria-hidden="true">→</span></a>
-          <a class="btn btn-ghost magnetic" href="#info">Say hi</a>
         </div>
       </div>
 
       <a class="scroll-cue" href="#projects" aria-label="Scroll to projects"><span></span></a>
     </section>
 
-    <!-- TECH TICKER -->
-    <div class="marquee" data-marquee>
-      <div class="marquee-track" aria-hidden="true" data-stack></div>
-    </div>
-
-    <!-- PROJECTS -->
+    <!-- PROJECTS as a tracklist -->
     <section id="projects" class="section container">
       <header class="section-head reveal">
-        <p class="kicker mono">01 — Work</p>
+        <p class="kicker mono">01 — Work · Side A</p>
         <h2>Things I've built</h2>
       </header>
       <div class="filters reveal" role="group" aria-label="Filter projects" data-filters></div>
-      <div class="grid" data-projects></div>
+      <div class="track-head mono reveal" aria-hidden="true"><span>#</span><span>Title</span><span>Genre</span><span>Year</span><span></span></div>
+      <ol class="tracklist" data-projects></ol>
     </section>
 
-    <!-- ABOUT -->
-    <section id="about" class="section container">
+    <!-- EXPERIENCE piano -->
+    <section id="anthology" class="section container" data-anthology>
       <header class="section-head reveal">
-        <p class="kicker mono">02 — About</p>
-        <h2>What's up dog?</h2>
+        <p class="kicker mono">02 — Anthology</p>
+        <h2>Press a key</h2>
+        <p class="section-lede">Every key plays a note and a chapter of what I've been up to.</p>
       </header>
-      <div class="about-grid" data-about-grid>
-        <div class="about-text reveal" data-about></div>
-        <aside class="about-side">
-          <div class="stats" data-stats></div>
-          <div class="now reveal" style="--d:200ms">
-            <p class="mono now-title">// right now</p>
-            <ul data-now></ul>
+      <div class="piano-stage reveal" data-piano-stage>
+        <div class="exp-area">
+          <div class="exp-card exp-hint" data-exp aria-live="polite">
+            <p class="mono">♪ press a key<span class="kbd-hint"> or type <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd> <kbd>F</kbd> <kbd>G</kbd></span></p>
           </div>
-          <a class="text-link reveal" href="/albums">I'm always listening <span class="arrow" aria-hidden="true">→</span></a>
-        </aside>
+        </div>
+        <div class="piano">
+          <div class="keys" data-piano></div>
+        </div>
+        <p class="piano-foot mono"><span data-played></span><span class="sound-note">🔊 sound on</span></p>
       </div>
     </section>
 
-    <!-- INFO (contact) -->
-    <section id="info" class="section container contact">
-      <p class="kicker mono reveal">03 — Info</p>
-      <h2 class="contact-title reveal">Let's <br /><span class="gradient-text">connect!</span></h2>
-      <div class="contact-card reveal" data-email-block>
-        <a class="email-link" data-email href="#"></a>
-        <button class="btn btn-ghost btn-sm magnetic" type="button" data-copy>Copy</button>
+    <!-- INFO (contact) as liner notes -->
+    <section id="info" class="section container liner">
+      <header class="section-head reveal">
+        <p class="kicker mono">03 — Info</p>
+        <h2>Liner notes</h2>
+      </header>
+      <div class="liner-booklet reveal">
+        <div class="liner-page">
+          <p class="liner-title mono">Credits</p>
+          <dl class="credits" data-credits></dl>
+        </div>
+        <div class="liner-page liner-contact">
+          <p class="liner-title mono">Contact</p>
+          <div data-email-block>
+            <p class="liner-label mono">Bookings &amp; hellos</p>
+            <a class="liner-email" data-email href="#"></a>
+            <button class="liner-copy" type="button" data-copy>Copy email</button>
+          </div>
+          <p class="liner-label mono">Also available on</p>
+          <div class="liner-socials" data-socials></div>
+        </div>
+        <p class="liner-fine mono">℗ &amp; © <span data-year></span> <span data-name-plain></span> · All rights reserved · Unauthorised copying of this site is very flattering</p>
       </div>
-      <div class="socials reveal" data-socials></div>
     </section>
   </main>
 
