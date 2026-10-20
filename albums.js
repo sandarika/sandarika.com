@@ -16,6 +16,17 @@ window.ALBUMS = [
     "artistId": "UC0nEcTGDKDsdF4KcCh3-NUQ"
   },
   {
+    "title": "PITCOIN",
+    "artist": "Pitbull",
+    "year": 2026,
+    "released": "2026-10-08",
+    "favSong": "Gringa Repartera",
+    "image": "images/albums/pitbull-pitcoin.jpg",
+    "link": "https://music.youtube.com/browse/MPREb_u2QoWh93SQk",
+    "id": "MPREb_u2QoWh93SQk",
+    "artistId": "UC03jIQv4WXBSHdr1DlCLYDw"
+  },
+  {
     "title": "Made In Chicago",
     "artist": "Lalah Hathaway",
     "year": 2026,
@@ -58,6 +69,17 @@ window.ALBUMS = [
     "id": "MPREb_IrTVSodLnvP",
     "artistId": "UCprIJgC2-qqSHNVztFjRFmw",
     "released": "2026-08-14"
+  },
+  {
+    "title": "When the lights turn on (deluxe)",
+    "artist": "MICO",
+    "year": 2026,
+    "released": "2026-06-25",
+    "favSong": "Can't keep crying",
+    "image": "images/albums/mico-when-the-lights-turn-on-deluxe.jpg",
+    "link": "https://music.youtube.com/browse/MPREb_DT16g1LttCe",
+    "id": "MPREb_DT16g1LttCe",
+    "artistId": "UCVSwECe-Ld5ZQty8k81f6yQ"
   },
   {
     "title": "you seem pretty sad for a girl so in love",
