@@ -5,6 +5,17 @@
    link (opens when the card is clicked). */
 window.ALBUMS = [
   {
+    "title": "Damascus Road",
+    "artist": "Josiah Queen",
+    "year": 2026,
+    "released": "2026-10-23",
+    "favSong": "out of breath",
+    "image": "images/albums/josiah-queen-damascus-road.jpg",
+    "link": "https://music.youtube.com/browse/MPREb_5V1CPGu4vWu",
+    "id": "MPREb_5V1CPGu4vWu",
+    "artistId": "UCNuifOCaeZw1_yjQH2ebdqA"
+  },
+  {
     "title": "Dopamine Chamber",
     "artist": "Fontaines D.C.",
     "year": 2026,
